@@ -11,24 +11,20 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
 
     @FocusState var searchFieldFocused: Bool
     @ObservedObject var viewModel: ViewModel
+    @Environment(\.isSearching) private var isSearching
 
     var body: some View {
         VStack {
-            SearchBarView(text: $viewModel.searchQuery,
-                          isFocused: $searchFieldFocused) {
-                searchFieldFocused = false
-            }
-            .padding(.horizontal)
-
             mainList
                 .overlay {
-                    if searchFieldFocused {
+                    if !viewModel.searchQuery.isEmpty {
                         searchResultsList
                     }
                 }
         }
         .background(.backgroundPrimary)
-        .navigationTitle(searchFieldFocused ? "" : "All shows")
+        .searchable(text: $viewModel.searchQuery, prompt: Text("Search shows…"))
+        .navigationTitle("All shows")
         .onAppear {
             Task { await viewModel.onAppear() }
 
@@ -38,6 +34,12 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
             appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+
+            if let textColor = UIColor(named: "textPrimary") {
+                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [
+                    .foregroundColor: textColor
+                ]
+            }
         }
         .animation(.easeInOut, value: searchFieldFocused)
     }
