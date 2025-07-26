@@ -1,11 +1,16 @@
 
 import SwiftUI
 
-enum AppRoute: String, Hashable, Identifiable {
-    var id: String { self.rawValue }
+enum AppRoute: Hashable, Identifiable {
+    var id: Int {
+        switch self {
+        case .home: return 0
+        case .showDetail(let show): return show.id
+        }
+    }
 
     case home
-
+    case showDetail(ShowDetailData)
 }
 
 protocol AppRouterType: ObservableObject {
@@ -23,9 +28,15 @@ class AppRouter: AppRouterType, ObservableObject {
     @Published var sheet: AppRoute?
     @Published var fullScreen: AppRoute?
 
+    private lazy var showsListViewModel: ShowsListViewModel =  {
+        ShowsListViewModel(router: self)
+    }()
+
     func route(to route: AppRoute) {
         switch route {
         case .home:
+            path.append(route)
+        case .showDetail:
             path.append(route)
         }
     }
@@ -34,7 +45,9 @@ class AppRouter: AppRouterType, ObservableObject {
     func build(for route: AppRoute) -> any View {
         switch route {
         case .home:
-            ShowsListView(viewModel: ShowsListViewModel())
+            ShowsListView(viewModel: showsListViewModel)
+        case .showDetail(let showData):
+            ShowDetailView(viewModel: ShowDetailViewModel(show: showData))
         }
     }
 }

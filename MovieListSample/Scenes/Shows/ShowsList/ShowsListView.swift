@@ -29,7 +29,8 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
             Task { await viewModel.onAppear() }
 
             let appearance = UINavigationBarAppearance()
-            appearance.configureWithTransparentBackground()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(named: "backgroundPrimary") ?? .systemBackground
             appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
             appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
             UINavigationBar.appearance().standardAppearance = appearance
@@ -41,7 +42,6 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                 ]
             }
         }
-        .animation(.easeInOut, value: searchFieldFocused)
     }
 
     private var mainList: some View {
@@ -57,6 +57,9 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                             }
                         }
                         .listRowBackground(Color.clear)
+                        .onTapGesture {
+                            viewModel.tapShow(show)
+                        }
                 }
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
@@ -84,6 +87,9 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
             List(shows) { show in
                 ShowRowView(show: show)
                     .listRowBackground(Color.clear)
+                    .onTapGesture {
+                        viewModel.tapShow(show)
+                    }
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
@@ -94,42 +100,19 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
     }
 }
 
-let mockShows = [Show(
-    id: 1,
-    url: "",
-    name: "Mock Show",
-    type: "Scripted",
-    language: "English",
-    genres: ["Drama", "Comedy"],
-    status: "Running",
-    runtime: 30,
-    averageRuntime: 30,
-    premiered: "2020-01-01",
-    ended: nil,
-    officialSite: nil,
-    schedule: .init(time: "20:00", days: ["Monday"]),
-    rating: .init(average: 8.5),
-    weight: 90,
-    network: .init(id: 1, name: "Mock Network", country: .init(name: "US", code: "US", timezone: "America/New_York"), officialSite: nil),
-    webChannel: nil,
-    dvdCountry: nil,
-    externals: .init(tvrage: nil, thetvdb: nil, imdb: nil),
-    image: .init(medium: "", original: ""),
-    summary: "A show about mocks",
-    updated: 0,
-    links: .init(self: .init(href: ""), previousepisode: nil)
-)]
-
 class MockVM: ShowsListViewModelType {
+
+    
     var searchQuery: String = ""
 
     var isLoadingBottom: Bool = false
 
     func reachedBottom() {}
 
-    @Published var state: LoadableState<[Show]> = .success(mockShows)
-    @Published var searchState: LoadableState<[Show]> = .success(mockShows)
+    @Published var state: LoadableState<[Show]> = .success([.mock])
+    @Published var searchState: LoadableState<[Show]> = .success([.mock])
     func onAppear() async {}
+    func tapShow(_ show: Show) {}
 }
 
 #Preview {

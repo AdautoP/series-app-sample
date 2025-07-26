@@ -17,6 +17,7 @@ protocol ShowsListViewModelType: ObservableObject {
 
     func onAppear() async
     func reachedBottom()
+    func tapShow(_ show: Show)
 }
 
 
@@ -26,6 +27,7 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     private var allShows: [Show] = []
     private var canLoadMore = true
     private var cancellables = Set<AnyCancellable>()
+    private let router: any AppRouterType
 
     @Published var searchQuery: String = ""
     @Published var searchState: LoadableState<[Show]> = .success([])
@@ -33,8 +35,10 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     @Published var state: LoadableState<[Show]> = .idle
     @Published var isLoadingBottom: Bool = false
 
-    init(service: ShowsServiceType = ShowsService()) {
+    init(router: any AppRouterType,
+         service: ShowsServiceType = ShowsService()) {
         self.service = service
+        self.router = router
 
         $searchQuery
             .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
@@ -64,8 +68,12 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
         }
     }
 
+    func tapShow(_ show: Show) {
+        router.route(to: .showDetail(ShowDetailData(from: show)))
+    }
+
     @MainActor
-    func searchShows(query: String) async {
+    private func searchShows(query: String) async {
         guard !query.isEmpty else {
             searchState = .success([])
             return
@@ -103,8 +111,8 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
                 state = .failure(error)
             }
 
-            if case let .statusCode(code, _) = error, code == 401 {
-                canLoadMore = false
+            if case let .statusCode(code, _) = error, code == 404 {
+                canLoadMore = false // TODO: Prevent refreshes
             }
         }
     }
