@@ -29,9 +29,22 @@
 		3022260C2E346930005A4EEC /* MovieListSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		30D21E732E35122E00C480F6 /* Exceptions for "MovieListSample" folder in "MovieListSample" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 302225F42E34692E005A4EEC /* MovieListSample */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		302225F72E34692E005A4EEC /* MovieListSample */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				30D21E732E35122E00C480F6 /* Exceptions for "MovieListSample" folder in "MovieListSample" target */,
+			);
 			path = MovieListSample;
 			sourceTree = "<group>";
 		};
@@ -271,6 +284,8 @@
 /* Begin XCBuildConfiguration section */
 		302226142E346930005A4EEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 302225F72E34692E005A4EEC /* MovieListSample */;
+			baseConfigurationReferenceRelativePath = Resources/MovieListSampleDebug.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -402,6 +417,7 @@
 				DEVELOPMENT_TEAM = C2BTWK9QR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieListSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -430,6 +446,7 @@
 				DEVELOPMENT_TEAM = C2BTWK9QR9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieListSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

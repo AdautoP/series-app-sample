@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol NetworkServiceType {
+protocol NetworkHandlerType {
     func execute<Response: Decodable>(
-        _ request: NetworkRequest<Response>
+        _ request: NetworkRequest
     ) async -> Result<Response, NetworkError>
 }
 
 
-final class NetworkService {
+final class NetworkHandler: NetworkHandlerType {
     private let session: URLSession
     private let decoder: JSONDecoder
 
-    static let shared = NetworkService()
+    static let shared = NetworkHandler()
 
     private init(
         session: URLSession = .shared,
@@ -30,12 +30,11 @@ final class NetworkService {
     }
 
     func execute<Response: Decodable>(
-        _ request: NetworkRequest<Response>
+        _ request: NetworkRequest
     ) async -> Result<Response, NetworkError> {
-        guard var components = URLComponents(string: Environment.baseURL) else {
-            return .failure(.invalidURL)
-        }
-
+        var components = URLComponents()
+        components.scheme = Environment.scheme
+        components.host = Environment.baseURL
         components.path += request.path
         components.queryItems = request.queryItems
 

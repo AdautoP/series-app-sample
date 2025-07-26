@@ -17,6 +17,7 @@ protocol AppRouterType: ObservableObject {
     func build(for route: AppRoute) -> any View
 }
 
+
 class AppRouter: AppRouterType, ObservableObject {
     @Published var path: NavigationPath = NavigationPath()
     @Published var sheet: AppRoute?
@@ -33,7 +34,7 @@ class AppRouter: AppRouterType, ObservableObject {
     func build(for route: AppRoute) -> any View {
         switch route {
         case .home:
-            HomeView()
+            ShowsListView(viewModel: ShowsListViewModel())
         }
     }
 }

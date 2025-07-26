@@ -8,4 +8,5 @@
 // Configuration settings file format documentation can be found at:
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 
-API_ROOT_URL = "https://api.tvmaze.com"
+API_SCHEME = https
+API_ROOT_URL = api.tvmaze.com

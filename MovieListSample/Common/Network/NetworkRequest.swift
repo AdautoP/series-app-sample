@@ -22,7 +22,7 @@ enum NetworkError: Error {
     case decoding(Error)
 }
 
-struct NetworkRequest<Response: Decodable> {
+struct NetworkRequest {
     let path: String
     let method: HTTPMethod
     let headers: [String: String]?
@@ -31,7 +31,7 @@ struct NetworkRequest<Response: Decodable> {
 
     public init(
         path: String,
-        method: HTTPMethod = .get,
+        method: HTTPMethod,
         headers: [String: String]? = nil,
         queryItems: [URLQueryItem]? = nil,
         body: [String: Any]? = nil
