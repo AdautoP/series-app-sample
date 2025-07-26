@@ -68,6 +68,21 @@ struct AppCoordinatorView<Router: AppRouterType>: View {
                     router.build(for: route).erased
                 }
         }
+        .onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(named: "backgroundPrimary") ?? .systemBackground
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
+            appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+
+            if let textColor = UIColor(named: "textPrimary") {
+                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [
+                    .foregroundColor: textColor
+                ]
+            }
+        }
         .tint(.action)
     }
 }

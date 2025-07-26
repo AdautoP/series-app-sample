@@ -46,7 +46,6 @@ struct ShowRowView: View {
             .padding(.vertical, 8)
             .padding(.horizontal)
         }
-        .fixedSize()
     }
 
     private var showImage: some View {

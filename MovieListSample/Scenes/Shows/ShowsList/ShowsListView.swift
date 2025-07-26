@@ -25,22 +25,8 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
         .background(.backgroundPrimary)
         .searchable(text: $viewModel.searchQuery, prompt: Text("Search shows…"))
         .navigationTitle("All shows")
-        .onAppear {
-            Task { await viewModel.onAppear() }
-
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(named: "backgroundPrimary") ?? .systemBackground
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
-            appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
-            UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-
-            if let textColor = UIColor(named: "textPrimary") {
-                UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [
-                    .foregroundColor: textColor
-                ]
-            }
+        .task {
+            await viewModel.onAppear()
         }
     }
 
@@ -56,6 +42,8 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                                 }
                             }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
                         .listRowBackground(Color.clear)
                         .onTapGesture {
                             viewModel.tapShow(show)
@@ -86,6 +74,8 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
             // TODO: Implement empty state if shows.isEmpty
             List(shows) { show in
                 ShowRowView(show: show)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
                     .listRowBackground(Color.clear)
                     .onTapGesture {
                         viewModel.tapShow(show)

@@ -14,6 +14,10 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                Text("Genres: \(viewModel.data.genresText)")
+                    .font(.subheadline)
+                    .foregroundStyle(.textSecondary)
+
                 if let url = viewModel.data.imageURL {
                     AsyncImageView(url: url) { image in
                         image
@@ -27,16 +31,7 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                     }
                 }
 
-                Text(viewModel.data.name)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.textPrimary)
-
                 Text(viewModel.data.scheduleText)
-                    .font(.subheadline)
-                    .foregroundStyle(.textSecondary)
-
-                Text("Genres: \(viewModel.data.genresText)")
                     .font(.subheadline)
                     .foregroundStyle(.textSecondary)
 
