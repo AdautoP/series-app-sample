@@ -1,0 +1,11 @@
+//
+//  MovieListSampleDebug.xcconfig
+//  MovieListSample
+//
+//  Created by Adauto Pinheiro on 26/07/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+API_ROOT_URL = "https://api.tvmaze.com"
