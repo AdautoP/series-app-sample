@@ -9,9 +9,31 @@ import SwiftUI
 
 struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
 
+    @FocusState var searchFieldFocused: Bool
     @ObservedObject var viewModel: ViewModel
 
     var body: some View {
+        VStack {
+            SearchBarView(text: $viewModel.searchQuery,
+                          isFocused: $searchFieldFocused) {
+                searchFieldFocused = false
+            }
+            .padding(.horizontal)
+
+            mainList
+                .overlay {
+                    if searchFieldFocused {
+                        searchResultsList
+                    }
+                }
+        }
+        .background(.backgroundPrimary)
+        .onAppear {
+            Task { await viewModel.onAppear() }
+        }
+    }
+
+    private var mainList: some View {
         AsyncView(viewModel.state) { shows in
             VStack {
                 List(shows) { show in
@@ -31,9 +53,11 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                 if viewModel.isLoadingBottom {
                     HStack {
                         Spacer()
+
                         ProgressView()
                             .padding(.vertical)
                             .tint(.action)
+
                         Spacer()
                     }
                     .fixedSize()
@@ -41,10 +65,21 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.backgroundPrimary)
-        .onAppear {
-            Task { await viewModel.onAppear() }
+    }
+
+    private var searchResultsList: some View {
+        AsyncView(viewModel.searchState, showLoadingOverlay: true) { shows in
+            // TODO: Implement empty state if shows.isEmpty
+            List(shows) { show in
+                ShowRowView(show: show)
+                    .listRowBackground(Color.clear)
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .background(Color.backgroundPrimary)
+            .zIndex(1)
         }
+        .background(.backgroundPrimary)
     }
 }
 
@@ -75,11 +110,14 @@ let mockShows = [Show(
 )]
 
 class MockVM: ShowsListViewModelType {
+    var searchQuery: String = ""
+
     var isLoadingBottom: Bool = false
 
     func reachedBottom() {}
 
     @Published var state: LoadableState<[Show]> = .success(mockShows)
+    @Published var searchState: LoadableState<[Show]> = .success(mockShows)
     func onAppear() async {}
 }
 

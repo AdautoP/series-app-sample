@@ -5,11 +5,15 @@
 //  Created by Adauto Pinheiro on 26/07/25.
 //
 
+import Combine
 import SwiftUI
 
 protocol ShowsListViewModelType: ObservableObject {
     var state: LoadableState<[Show]> { get }
     var isLoadingBottom: Bool { get }
+
+    var searchQuery: String { get set }
+    var searchState: LoadableState<[Show]> { get }
 
     func onAppear() async
     func reachedBottom()
@@ -21,12 +25,25 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     private var currentPage = 1
     private var allShows: [Show] = []
     private var canLoadMore = true
+    private var cancellables = Set<AnyCancellable>()
+
+    @Published var searchQuery: String = ""
+    @Published var searchState: LoadableState<[Show]> = .success([])
 
     @Published var state: LoadableState<[Show]> = .idle
     @Published var isLoadingBottom: Bool = false
 
     init(service: ShowsServiceType = ShowsService()) {
         self.service = service
+
+        $searchQuery
+            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] query in
+                guard let self else { return }
+                Task { await self.searchShows(query: query) }
+            }
+            .store(in: &cancellables)
     }
 
     @MainActor
@@ -48,6 +65,25 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     }
 
     @MainActor
+    func searchShows(query: String) async {
+        guard !query.isEmpty else {
+            searchState = .success([])
+            return
+        }
+        
+        searchState = .loading
+
+        let result = await service.searchShows(for: query)
+
+        switch result {
+            case .success(let results):
+            searchState = .success(results.map(\.show))
+        case .failure(let error):
+            searchState = .failure(error)
+        }
+    }
+
+    @MainActor
     private func request(page: Int) async {
         let result = await service.getShows(for: page)
 
@@ -57,7 +93,6 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
                 !allShows.contains(where: { $0.id == new.id })
             }
 
-            canLoadMore = !newShows.isEmpty
             allShows.append(contentsOf: newShows)
             state = .success(allShows)
             isLoadingBottom = false
@@ -66,6 +101,10 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
             isLoadingBottom = false
             if allShows.isEmpty {
                 state = .failure(error)
+            }
+
+            if case let .statusCode(code, _) = error, code == 401 {
+                canLoadMore = false
             }
         }
     }

@@ -71,6 +71,7 @@ struct AsyncView<Success: Equatable, Content: View, Loading: View, ErrorContent:
                 content(value)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onChange(of: state) { oldValue, newValue in
             if newValue != oldValue {
                 trackSuccess(newValue)
@@ -126,6 +127,8 @@ struct DefaultErrorView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .foregroundStyle(.warning)
     }
 }
 

@@ -94,3 +94,8 @@ struct ShowLinks: Codable, Equatable {
         let name: String?
     }
 }
+
+struct SearchResult: Codable {
+    let score: Double
+    let show: Show
+}
