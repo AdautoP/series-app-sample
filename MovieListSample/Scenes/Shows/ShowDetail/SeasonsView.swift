@@ -21,13 +21,14 @@ struct SeasonsView: View {
     @State private var selectedSeason: Season?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 32) {
                     ForEach(seasons, id: \.id) { season in
                         Text(season.name)
+                            .font(.subheadline)
                             .fontWeight(season == selectedSeason ? .bold : .regular)
-                            .foregroundColor(season == selectedSeason ? .accentColor : .textDisabled)
+                            .foregroundColor(season == selectedSeason ? .action : .textDisabled)
                             .onTapGesture {
                                 withAnimation(.easeInOut) {
                                     selectedSeason = season
@@ -35,7 +36,6 @@ struct SeasonsView: View {
                             }
                     }
                 }
-                .padding(.top)
             }
 
             if let selected = selectedSeason {
@@ -50,6 +50,7 @@ struct SeasonsView: View {
                         }
                     }
                     .padding(.vertical, 4)
+
                 }
             }
         }

@@ -27,8 +27,20 @@ extension ShowDetailData {
         }()
         self.genresText = show.genres.isEmpty ? "No genres" : show.genres.joined(separator: ", ")
         self.summary = {
-            guard let summaryHTML = show.summary else { return nil }
-            return try? AttributedString(markdown: summaryHTML)
+            guard let summaryHTML = show.summary,
+                  let data = summaryHTML.data(using: .utf8),
+                  let nsAttr = try? NSAttributedString(
+                      data: data,
+                      options: [
+                          .documentType: NSAttributedString.DocumentType.html,
+                          .characterEncoding: String.Encoding.utf8.rawValue
+                      ],
+                      documentAttributes: nil
+                  ) else {
+                return nil
+            }
+
+            return AttributedString(nsAttr.string)
         }()
     }
 }

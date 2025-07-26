@@ -18,7 +18,7 @@ struct Episode: Codable, Identifiable, Equatable, Hashable {
     let type: String
     let airdate: String
     let airtime: String
-    let runtime: Int
+    let runtime: Int?
     let rating: Rating
     let image: APIImage?
     let summary: String?
