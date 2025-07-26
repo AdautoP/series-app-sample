@@ -28,9 +28,18 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                 }
         }
         .background(.backgroundPrimary)
+        .navigationTitle(searchFieldFocused ? "" : "All shows")
         .onAppear {
             Task { await viewModel.onAppear() }
+
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithTransparentBackground()
+            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
+            appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "textPrimary") ?? UIColor.white]
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
+        .animation(.easeInOut, value: searchFieldFocused)
     }
 
     private var mainList: some View {

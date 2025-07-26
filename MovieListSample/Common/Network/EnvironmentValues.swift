@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Environment {
+enum EnvironmentValues {
     static var baseURL: String {
         guard let url = Bundle.main.object(forInfoDictionaryKey: "API_ROOT_URL") as? String else {
             fatalError("API_ROOT_URL not set in Info.plist")

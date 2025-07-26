@@ -33,8 +33,8 @@ final class NetworkHandler: NetworkHandlerType {
         _ request: NetworkRequest
     ) async -> Result<Response, NetworkError> {
         var components = URLComponents()
-        components.scheme = Environment.scheme
-        components.host = Environment.baseURL
+        components.scheme = EnvironmentValues.scheme
+        components.host = EnvironmentValues.baseURL
         components.path += request.path
         components.queryItems = request.queryItems
 

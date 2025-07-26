@@ -55,6 +55,7 @@ struct AppCoordinatorView<Router: AppRouterType>: View {
                     router.build(for: route).erased
                 }
         }
+        .tint(.action)
     }
 }
 
