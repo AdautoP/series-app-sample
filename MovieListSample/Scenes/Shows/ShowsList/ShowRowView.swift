@@ -12,25 +12,26 @@ struct ShowRowView: View {
     let show: Show
 
     var body: some View {
-        HStack(alignment: .center, spacing: 16) {
+        HStack(alignment: .center, spacing: 0) {
             showImage
                 .shadow(radius: 4.0)
 
             VStack(alignment: .leading, spacing: 0) {
                 Text(show.name)
-                    .font(.headline)
+                    .font(.subheadline.bold())
+                    .foregroundStyle(.textPrimary)
 
                 if let rating = show.rating.average {
-                    HStack(spacing: 4) {
+                    HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Image(systemName: "star.fill")
                             .renderingMode(.template)
                             .resizable()
-                            .frame(width: 12, height: 12)
-                            .foregroundColor(.yellow)
+                            .frame(width: 10, height: 10)
+                            .foregroundColor(.action)
 
                         Text((String(format: "%.1f", rating)))
-                            .font(.subheadline)
-                            .foregroundColor(.yellow)
+                            .font(.caption.bold())
+                            .foregroundColor(.action)
                     }
                 }
 
@@ -38,11 +39,12 @@ struct ShowRowView: View {
 
                 if !show.genres.isEmpty {
                     Text(show.genres.joined(separator: ", "))
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(.textSecondary)
                 }
             }
             .padding(.vertical, 8)
+            .padding(.horizontal)
         }
         .fixedSize()
     }
@@ -110,4 +112,5 @@ struct ShowRowView: View {
         updated: 0,
         links: .init(self: .init(href: ""), previousepisode: nil)
     ))
+    .background(.backgroundPrimary)
 }

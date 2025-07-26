@@ -13,27 +13,35 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
 
     var body: some View {
         AsyncView(viewModel.state) { shows in
-            List(shows) { show in
-                ShowRowView(show: show)
-                    .onAppear {
-                        if show == shows.last {
-                            if !viewModel.isLoadingBottom {
-                                viewModel.reachedBottom()
+            VStack {
+                List(shows) { show in
+                    ShowRowView(show: show)
+                        .onAppear {
+                            if show == shows.last {
+                                if !viewModel.isLoadingBottom {
+                                    viewModel.reachedBottom()
+                                }
                             }
                         }
-                    }
-            }
-            .listStyle(.plain)
+                        .listRowBackground(Color.clear)
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
 
-            if viewModel.isLoadingBottom {
-                HStack {
-                    Spacer()
-                    ProgressView()
-                        .padding()
-                    Spacer()
+                if viewModel.isLoadingBottom {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .padding(.vertical)
+                            .tint(.action)
+                        Spacer()
+                    }
+                    .fixedSize()
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.backgroundPrimary)
         .onAppear {
             Task { await viewModel.onAppear() }
         }
@@ -70,7 +78,7 @@ class MockVM: ShowsListViewModelType {
     var isLoadingBottom: Bool = false
 
     func reachedBottom() {}
-    
+
     @Published var state: LoadableState<[Show]> = .success(mockShows)
     func onAppear() async {}
 }

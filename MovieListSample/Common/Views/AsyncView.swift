@@ -111,6 +111,7 @@ extension AsyncView where Loading == DefaultLoadingView, ErrorContent == Default
 struct DefaultLoadingView: View {
     var body: some View {
         ProgressView()
+            .tint(.action)
     }
 }
 

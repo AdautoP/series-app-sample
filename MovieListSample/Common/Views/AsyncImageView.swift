@@ -29,6 +29,7 @@ struct AsyncImageView<Content: View, Placeholder: View>: View {
     let content: (Image) -> Content
     let placeholder: () -> Placeholder
 
+    @State private var downloadTask: Task<Void, Never>?
     @State private var loadedImage: Image?
     @State private var isLoading: Bool = false
 
@@ -44,36 +45,46 @@ struct AsyncImageView<Content: View, Placeholder: View>: View {
                 ProgressView()
                     .progressViewStyle(.circular)
                     .scaleEffect(0.8)
+                    .tint(.action)
             }
         }
         .task(id: url) {
-            await loadImage()
+            loadImage()
         }
     }
 
-    private func loadImage() async {
+    private func loadImage() {
+        // Cancela qualquer download anterior antes de iniciar um novo
+        downloadTask?.cancel()
+
         guard let url else { return }
 
-        if let cachedImage = ImageCache.shared.image(for: url) {
-            loadedImage = Image(uiImage: cachedImage)
+        if let cached = ImageCache.shared.image(for: url) {
+            loadedImage = Image(uiImage: cached)
             return
         }
 
         isLoading = true
-        defer { isLoading = false }
+        downloadTask = Task {
 
-        do {
-            let config = URLSessionConfiguration.ephemeral
-            config.timeoutIntervalForRequest = 10
-            config.requestCachePolicy = .reloadIgnoringLocalCacheData
-            let session = URLSession(configuration: config) // This session here is only required cause my personal Mac was having conflicts with system control apps invalidating the cache
-            let (data, _) = try await session.data(from: url)
-            if let uiImage = UIImage(data: data) {
-                ImageCache.shared.insertImage(uiImage, for: url)
-                loadedImage = Image(uiImage: uiImage)
+            do {
+                let config = URLSessionConfiguration.ephemeral
+                config.timeoutIntervalForRequest = 10
+                config.requestCachePolicy = .reloadIgnoringLocalCacheData
+                let session = URLSession(configuration: config)
+
+                let (data, _) = try await session.data(from: url)
+                if let uiImage = UIImage(data: data) {
+                    ImageCache.shared.insertImage(uiImage, for: url)
+                    await MainActor.run {
+                        loadedImage = Image(uiImage: uiImage)
+                        isLoading = false
+                    }
+                }
+            } catch {
+                await MainActor.run { isLoading = false }
             }
-        } catch {
-            // silenced
         }
     }
+
 }
