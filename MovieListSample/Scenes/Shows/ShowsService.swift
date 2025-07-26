@@ -7,6 +7,7 @@
 
 protocol ShowsServiceType {
     func getShows(for page: Int) async -> Result<[Show], NetworkError>
+    func getEpisodes(for showId: Int) async -> Result<[Episode], NetworkError>
     func searchShows(for query: String) async -> Result<[SearchResult], NetworkError>
 }
 
@@ -21,6 +22,12 @@ final class ShowsService: ShowsServiceType {
         let request = NetworkRequest(path: "/shows",
                                      method: .get,
                                      queryItems: [.init(name: "page", value: "\(page)")])
+        return await handler.execute(request)
+    }
+
+    func getEpisodes(for showId: Int) async -> Result<[Episode], NetworkError> {
+        let request = NetworkRequest(path: "/shows/\(showId)/episodes",
+                                     method: .get)
         return await handler.execute(request)
     }
 

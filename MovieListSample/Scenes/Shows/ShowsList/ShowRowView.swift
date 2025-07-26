@@ -50,8 +50,7 @@ struct ShowRowView: View {
 
     private var showImage: some View {
         Group {
-            if let urlString = show.image?.medium,
-               let url = URL(string: urlString) {
+            if let url = show.image?.medium {
                 AsyncImageView(
                     url: url
                 ) { image in

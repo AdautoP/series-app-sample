@@ -41,13 +41,18 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                         .foregroundStyle(.textPrimary)
                 }
 
-                // Aqui futuramente entrará a lista de episódios por temporada
+                AsyncView(viewModel.seasonsState) { seasons in
+                    SeasonsView(seasons: seasons)
+                }
             }
-            .padding()
         }
+        .padding(.horizontal)
         .frame(maxWidth: .infinity)
         .background(.backgroundPrimary)
         .navigationTitle(viewModel.data.name)
+        .task {
+            await viewModel.onAppear()
+        }
     }
 }
 

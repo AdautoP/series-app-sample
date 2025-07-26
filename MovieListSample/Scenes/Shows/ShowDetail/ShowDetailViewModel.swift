@@ -20,7 +20,7 @@ extension ShowDetailData {
     init(from show: Show) {
         self.id = show.id
         self.name = show.name
-        self.imageURL = URL(string: show.image?.original ?? show.image?.medium ?? "")
+        self.imageURL = show.image?.original ?? show.image?.medium
         self.scheduleText = {
             let days = show.schedule.days.joined(separator: ", ")
             return days.isEmpty ? "No schedule info" : "\(days) at \(show.schedule.time)"
@@ -35,12 +35,39 @@ extension ShowDetailData {
 
 protocol ShowDetailViewModelType: ObservableObject {
     var data: ShowDetailData { get }
+    var seasonsState: LoadableState<[Season]> { get }
+
+    func onAppear() async
 }
 
 final class ShowDetailViewModel: ShowDetailViewModelType {
     private(set) var data: ShowDetailData
+    private let service: ShowsServiceType
 
-    init(show: ShowDetailData) {
+    @Published var seasonsState: LoadableState<[Season]> = .idle
+
+    init(show: ShowDetailData, service: ShowsServiceType = ShowsService()) {
         self.data = show
+        self.service = service
+    }
+
+    @MainActor
+    func onAppear() async {
+        seasonsState = .loading
+
+        let result = await service.getEpisodes(for: data.id)
+
+        switch result {
+        case .success(let episodes):
+            let grouped = Dictionary(grouping: episodes, by: \.season)
+            let sorted = grouped
+                .sorted(by: { $0.key < $1.key })
+                .map { key, episodes in
+                    Season(name: "Season \(key)", episodes: episodes.sorted(by: { $0.number < $1.number }))
+                }
+            seasonsState = .success(sorted)
+        case  .failure(let error):
+            seasonsState = .failure(error)
+        }
     }
 }

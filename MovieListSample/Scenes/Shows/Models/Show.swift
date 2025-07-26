@@ -28,7 +28,7 @@ struct Show: Codable, Identifiable, Equatable {
     let webChannel: WebChannel?
     let dvdCountry: Country?
     let externals: Externals
-    let image: ShowImage?
+    let image: APIImage?
     let summary: String?
     let updated: Int
     let links: ShowLinks
@@ -46,7 +46,7 @@ struct Schedule: Codable, Equatable {
     let days: [String]
 }
 
-struct Rating: Codable, Equatable {
+struct Rating: Codable, Equatable, Hashable {
     let average: Double?
 }
 
@@ -76,9 +76,9 @@ struct Externals: Codable, Equatable {
     let imdb: String?
 }
 
-struct ShowImage: Codable, Equatable {
-    let medium: String
-    let original: String
+struct APIImage: Codable, Equatable, Hashable {
+    let medium: URL
+    let original: URL
 }
 
 struct ShowLinks: Codable, Equatable {
@@ -121,7 +121,7 @@ extension Show {
         webChannel: nil,
         dvdCountry: nil,
         externals: .init(tvrage: nil, thetvdb: nil, imdb: nil),
-        image: .init(medium: "", original: ""),
+        image: .init(medium: URL(string: "https://http://picsum.photos/200")!, original: URL(string: "https://http://picsum.photos/200")!),
         summary: "A show about mocks",
         updated: 0,
         links: .init(self: .init(href: ""), previousepisode: nil)
