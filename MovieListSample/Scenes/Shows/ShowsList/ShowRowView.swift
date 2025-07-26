@@ -12,18 +12,29 @@ struct ShowRowView: View {
     let show: Show
 
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
+        HStack(alignment: .center, spacing: 16) {
             showImage
+                .shadow(radius: 4.0)
 
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(show.name)
                     .font(.headline)
 
                 if let rating = show.rating.average {
-                    Text("⭐️ \(String(format: "%.1f", rating))")
-                        .font(.subheadline)
-                        .foregroundColor(.yellow)
+                    HStack(spacing: 4) {
+                        Image(systemName: "star.fill")
+                            .renderingMode(.template)
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                            .foregroundColor(.yellow)
+
+                        Text((String(format: "%.1f", rating)))
+                            .font(.subheadline)
+                            .foregroundColor(.yellow)
+                    }
                 }
+
+                Spacer()
 
                 if !show.genres.isEmpty {
                     Text(show.genres.joined(separator: ", "))
@@ -31,24 +42,27 @@ struct ShowRowView: View {
                         .foregroundColor(.secondary)
                 }
             }
+            .padding(.vertical, 8)
         }
-        .padding(.vertical, 8)
+        .fixedSize()
     }
 
     private var showImage: some View {
         Group {
             if let urlString = show.image?.medium,
                let url = URL(string: urlString) {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    default:
-                        placeholderImage
-                    }
+                AsyncImageView(
+                    url: url
+                ) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    placeholderImage
                 }
+                .frame(width: 60, height: 90)
+                .cornerRadius(8)
+                .clipped()
             } else {
                 placeholderImage
             }

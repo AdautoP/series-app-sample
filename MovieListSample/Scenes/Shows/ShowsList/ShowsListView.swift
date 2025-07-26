@@ -15,8 +15,24 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
         AsyncView(viewModel.state) { shows in
             List(shows) { show in
                 ShowRowView(show: show)
+                    .onAppear {
+                        if show == shows.last {
+                            if !viewModel.isLoadingBottom {
+                                viewModel.reachedBottom()
+                            }
+                        }
+                    }
             }
             .listStyle(.plain)
+
+            if viewModel.isLoadingBottom {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                        .padding()
+                    Spacer()
+                }
+            }
         }
         .onAppear {
             Task { await viewModel.onAppear() }
@@ -51,6 +67,10 @@ let mockShows = [Show(
 )]
 
 class MockVM: ShowsListViewModelType {
+    var isLoadingBottom: Bool = false
+
+    func reachedBottom() {}
+    
     @Published var state: LoadableState<[Show]> = .success(mockShows)
     func onAppear() async {}
 }
