@@ -83,10 +83,6 @@ struct AppRootView: App {
     var body: some Scene {
         WindowGroup {
             AppCoordinatorView(router: appRouter)
-                .task {
-                    let model = PersistenceController.shared.container.managedObjectModel
-                    print("Entities:", model.entities.map(\.name))
-                }
         }
     }
 }

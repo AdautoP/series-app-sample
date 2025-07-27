@@ -51,6 +51,9 @@
 		30D2208E2E36AE0900C480F6 /* PINSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */; };
 		30D220902E36B35400C480F6 /* PINAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */; };
 		30D220922E36B50400C480F6 /* PINStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220912E36B50400C480F6 /* PINStorage.swift */; };
+		30D220BE2E36C03B00C480F6 /* ShowsListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220BD2E36C03B00C480F6 /* ShowsListViewModelTests.swift */; };
+		30D220C22E36C08800C480F6 /* MockShowsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220C12E36C08800C480F6 /* MockShowsService.swift */; };
+		30D220C62E36C2C900C480F6 /* ShowDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220C52E36C2C900C480F6 /* ShowDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,9 @@
 		30D220932E36B56700C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeriesAppSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D220942E36B56700C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D220952E36B56700C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D220BD2E36C03B00C480F6 /* ShowsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewModelTests.swift; sourceTree = "<group>"; };
+		30D220C12E36C08800C480F6 /* MockShowsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShowsService.swift; sourceTree = "<group>"; };
+		30D220C52E36C2C900C480F6 /* ShowDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +297,7 @@
 		30D220102E36627000C480F6 /* SeriesAppSampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				30D220C02E36C07E00C480F6 /* Shows */,
 				30D2200F2E36627000C480F6 /* MovieListSampleTests.swift */,
 			);
 			path = SeriesAppSampleTests;
@@ -350,6 +357,24 @@
 				30D2208B2E36A25F00C480F6 /* PINAuthView.swift */,
 			);
 			path = PINAuth;
+			sourceTree = "<group>";
+		};
+		30D220BF2E36C06F00C480F6 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				30D220C12E36C08800C480F6 /* MockShowsService.swift */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		30D220C02E36C07E00C480F6 /* Shows */ = {
+			isa = PBXGroup;
+			children = (
+				30D220BF2E36C06F00C480F6 /* Doubles */,
+				30D220BD2E36C03B00C480F6 /* ShowsListViewModelTests.swift */,
+				30D220C52E36C2C900C480F6 /* ShowDetailViewModelTests.swift */,
+			);
+			path = Shows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,7 +560,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D220C22E36C08800C480F6 /* MockShowsService.swift in Sources */,
 				30D220112E36627000C480F6 /* MovieListSampleTests.swift in Sources */,
+				30D220C62E36C2C900C480F6 /* ShowDetailViewModelTests.swift in Sources */,
+				30D220BE2E36C03B00C480F6 /* ShowsListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

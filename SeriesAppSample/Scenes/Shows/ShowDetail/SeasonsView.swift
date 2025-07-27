@@ -14,8 +14,6 @@ struct Season: Identifiable, Hashable {
     let episodes: [Episode]
 }
 
-import SwiftUI
-
 struct SeasonsView: View {
     let seasons: [Season]
     let onEpisodeTap: (Episode) -> Void
