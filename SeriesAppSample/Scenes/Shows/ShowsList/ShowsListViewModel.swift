@@ -27,7 +27,7 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     private var allShows: [Show] = []
     private var canLoadMore = true
     private var cancellables = Set<AnyCancellable>()
-    private let router: any AppRouterType
+    private let router: any ShowsListRouterType
 
     @Published var searchQuery: String = ""
     @Published var searchState: LoadableState<[Show]> = .success([])
@@ -35,7 +35,7 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     @Published var state: LoadableState<[Show]> = .idle
     @Published var isLoadingBottom: Bool = false
 
-    init(router: any AppRouterType,
+    init(router: any ShowsListRouterType,
          service: ShowsServiceType = ShowsService()) {
         self.service = service
         self.router = router

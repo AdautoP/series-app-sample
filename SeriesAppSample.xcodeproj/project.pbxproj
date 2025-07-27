@@ -37,6 +37,7 @@
 		30D220112E36627000C480F6 /* MovieListSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2200F2E36627000C480F6 /* MovieListSampleTests.swift */; };
 		30D220152E36628A00C480F6 /* MovieListSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220122E36628A00C480F6 /* MovieListSampleUITests.swift */; };
 		30D220162E36628A00C480F6 /* MovieListSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220132E36628A00C480F6 /* MovieListSampleUITestsLaunchTests.swift */; };
+		30D220682E366AA000C480F6 /* ShowsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220672E366AA000C480F6 /* ShowsListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		30D220642E3667C400C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SeriesAppSample.app; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app"; sourceTree = "<absolute>"; };
 		30D220652E3667C400C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
 		30D220662E3667C400C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
+		30D220672E366AA000C480F6 /* ShowsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 		30D21FEE2E36625700C480F6 /* Shows */ = {
 			isa = PBXGroup;
 			children = (
+				30D220672E366AA000C480F6 /* ShowsListCoordinator.swift */,
 				30D21FE02E36625700C480F6 /* EpisodeDetail */,
 				30D21FE32E36625700C480F6 /* Models */,
 				30D21FE82E36625700C480F6 /* ShowDetail */,
@@ -233,6 +236,7 @@
 		30D21FEF2E36625700C480F6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				30D220692E366B1200C480F6 /* Favorites */,
 				30D21FEE2E36625700C480F6 /* Shows */,
 			);
 			path = Scenes;
@@ -265,6 +269,13 @@
 				30D220132E36628A00C480F6 /* MovieListSampleUITestsLaunchTests.swift */,
 			);
 			path = SeriesAppSampleUITests;
+			sourceTree = "<group>";
+		};
+		30D220692E366B1200C480F6 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,6 +439,7 @@
 				30D220082E36625700C480F6 /* OpaqueNavigationModifier.swift in Sources */,
 				30D220092E36625700C480F6 /* EnvironmentValues.swift in Sources */,
 				30D2200A2E36625700C480F6 /* ShowsService.swift in Sources */,
+				30D220682E366AA000C480F6 /* ShowsListCoordinator.swift in Sources */,
 				30D2200B2E36625700C480F6 /* EpisodeDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

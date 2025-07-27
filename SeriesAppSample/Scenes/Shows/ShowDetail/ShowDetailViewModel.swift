@@ -54,12 +54,12 @@ protocol ShowDetailViewModelType: ObservableObject {
 final class ShowDetailViewModel: ShowDetailViewModelType {
     private(set) var data: ShowDetailData
     private let service: ShowsServiceType
-    private let router: any AppRouterType
+    private let router: any ShowsListRouterType
 
     @Published var seasonsState: LoadableState<[Season]> = .idle
 
     init(show: ShowDetailData,
-         router: any AppRouterType,
+         router: any ShowsListRouterType,
          service: ShowsServiceType = ShowsService()) {
         self.data = show
         self.service = service
