@@ -45,6 +45,10 @@
 		30D2207D2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2207B2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift */; };
 		30D2207E2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2207C2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift */; };
 		30D220802E367A8800C480F6 /* SeriesAppSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30D220772E3673F400C480F6 /* SeriesAppSample.xcdatamodeld */; };
+		30D220862E369F9A00C480F6 /* PINCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220852E369F9A00C480F6 /* PINCoordinator.swift */; };
+		30D220892E36A24600C480F6 /* PINSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220882E36A24600C480F6 /* PINSetupView.swift */; };
+		30D2208C2E36A25F00C480F6 /* PINAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208B2E36A25F00C480F6 /* PINAuthView.swift */; };
+		30D2208E2E36AE0900C480F6 /* PINSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +111,10 @@
 		30D220792E36762500C480F6 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		30D2207B2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteShow+CoreDataClass.swift"; sourceTree = "<group>"; };
 		30D2207C2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteShow+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		30D220852E369F9A00C480F6 /* PINCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINCoordinator.swift; sourceTree = "<group>"; };
+		30D220882E36A24600C480F6 /* PINSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINSetupView.swift; sourceTree = "<group>"; };
+		30D2208B2E36A25F00C480F6 /* PINAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINAuthView.swift; sourceTree = "<group>"; };
+		30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINSetupViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +262,7 @@
 		30D21FEF2E36625700C480F6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				30D220832E369E3E00C480F6 /* PIN */,
 				30D2206D2E366DC300C480F6 /* Favorites */,
 				30D21FEE2E36625700C480F6 /* Shows */,
 			);
@@ -305,6 +314,33 @@
 				30D2207C2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift */,
 			);
 			path = CoreDataClasses;
+			sourceTree = "<group>";
+		};
+		30D220832E369E3E00C480F6 /* PIN */ = {
+			isa = PBXGroup;
+			children = (
+				30D2208A2E36A25200C480F6 /* PINAuth */,
+				30D220872E36A24000C480F6 /* PINSetup */,
+				30D220852E369F9A00C480F6 /* PINCoordinator.swift */,
+			);
+			path = PIN;
+			sourceTree = "<group>";
+		};
+		30D220872E36A24000C480F6 /* PINSetup */ = {
+			isa = PBXGroup;
+			children = (
+				30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */,
+				30D220882E36A24600C480F6 /* PINSetupView.swift */,
+			);
+			path = PINSetup;
+			sourceTree = "<group>";
+		};
+		30D2208A2E36A25200C480F6 /* PINAuth */ = {
+			isa = PBXGroup;
+			children = (
+				30D2208B2E36A25F00C480F6 /* PINAuthView.swift */,
+			);
+			path = PINAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,14 +487,17 @@
 				30D21FF72E36625700C480F6 /* AsyncImageView.swift in Sources */,
 				30D21FF82E36625700C480F6 /* SearchBarView.swift in Sources */,
 				30D21FF92E36625700C480F6 /* CloseButton.swift in Sources */,
+				30D2208E2E36AE0900C480F6 /* PINSetupViewModel.swift in Sources */,
 				30D2207D2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift in Sources */,
 				30D2207E2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift in Sources */,
+				30D220892E36A24600C480F6 /* PINSetupView.swift in Sources */,
 				30D21FFA2E36625700C480F6 /* TransparentNavigationModifier.swift in Sources */,
 				30D21FFB2E36625700C480F6 /* AppRootView.swift in Sources */,
 				30D2207A2E36762500C480F6 /* PersistenceController.swift in Sources */,
 				30D220712E366E7000C480F6 /* FavoritesListViewModel.swift in Sources */,
 				30D21FFC2E36625700C480F6 /* EpisodeDetailViewModel.swift in Sources */,
 				30D21FFD2E36625700C480F6 /* PlaceholderImageSize.swift in Sources */,
+				30D2208C2E36A25F00C480F6 /* PINAuthView.swift in Sources */,
 				30D21FFE2E36625700C480F6 /* DSColors.swift in Sources */,
 				30D21FFF2E36625700C480F6 /* ShowRowView.swift in Sources */,
 				30D220002E36625700C480F6 /* ShowsListView.swift in Sources */,
@@ -468,6 +507,7 @@
 				30D220022E36625700C480F6 /* Show.swift in Sources */,
 				30D220032E36625700C480F6 /* Episode.swift in Sources */,
 				30D220042E36625700C480F6 /* NetworkRequest.swift in Sources */,
+				30D220862E369F9A00C480F6 /* PINCoordinator.swift in Sources */,
 				30D220052E36625700C480F6 /* View+Extensions.swift in Sources */,
 				30D220062E36625700C480F6 /* SeasonsView.swift in Sources */,
 				30D220072E36625700C480F6 /* AsyncView.swift in Sources */,

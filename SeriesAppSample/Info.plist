@@ -6,5 +6,7 @@
 	<string>$(API_ROOT_URL)</string>
 	<key>API_SCHEME</key>
 	<string>$(API_SCHEME)</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>We use Face ID to securely authenticate your access to the app.</string>
 </dict>
 </plist>
