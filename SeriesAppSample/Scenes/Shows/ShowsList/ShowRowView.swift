@@ -43,7 +43,7 @@ struct ShowRowView: View {
                         .foregroundColor(.textSecondary)
                 }
             }
-            .padding(.vertical, 8)
+            .padding(.vertical, 16)
             .padding(.horizontal)
         }
     }

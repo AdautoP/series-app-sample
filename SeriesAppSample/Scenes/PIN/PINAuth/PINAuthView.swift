@@ -12,47 +12,53 @@ struct PINAuthView: View {
     @ObservedObject var viewModel: PINAuthViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            Text("Enter your PIN")
-                .font(.title.bold())
-                .padding(.bottom, 24)
-                .foregroundStyle(.textPrimary)
+        ZStack {
+            Color.backgroundPrimary
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
 
-            pinDots(for: viewModel.pin)
+            VStack(spacing: 0) {
+                Text("Enter your PIN")
+                    .font(.title.bold())
+                    .padding(.bottom, 24)
+                    .foregroundStyle(.textPrimary)
 
-            if let error = viewModel.errorMessage {
-                Text(error)
-                    .foregroundColor(.error)
-                    .font(.caption.bold())
-                    .padding(.top, 12)
-            }
+                pinDots(for: viewModel.pin)
 
-            SecureField("", text: $viewModel.pin)
-                .keyboardType(.numberPad)
-                .textContentType(.oneTimeCode)
-                .frame(width: 0, height: 0)
-                .focused($isKeyboardActive)
-                .onChange(of: viewModel.pin) { _, newValue in
-                    if newValue.count == 4 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            viewModel.validatePIN()
+                if let error = viewModel.errorMessage {
+                    Text(error)
+                        .foregroundColor(.error)
+                        .font(.caption.bold())
+                        .padding(.top, 12)
+                }
+
+                SecureField("", text: $viewModel.pin)
+                    .keyboardType(.numberPad)
+                    .textContentType(.oneTimeCode)
+                    .frame(width: 0, height: 0)
+                    .focused($isKeyboardActive)
+                    .onChange(of: viewModel.pin) { _, newValue in
+                        if newValue.count == 4 {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                viewModel.validatePIN()
+                            }
                         }
                     }
-                }
 
-            if viewModel.biometricAvailable {
-                Button("Use Face ID / Touch ID") {
-                    viewModel.authenticateWithBiometrics()
+                if viewModel.biometricAvailable {
+                    Button("Use Face ID / Touch ID") {
+                        viewModel.authenticateWithBiometrics()
+                    }
+                    .font(.subheadline.bold())
+                    .padding(.top, 24)
+                    .foregroundStyle(.action)
                 }
-                .font(.subheadline.bold())
-                .padding(.top, 24)
-                .foregroundStyle(.action)
             }
-        }
-        .padding()
-        .onAppear {
-            isKeyboardActive = true
-            viewModel.authenticateWithBiometrics()
+            .padding()
+            .onAppear {
+                isKeyboardActive = true
+                viewModel.authenticateWithBiometrics()
+            }
         }
     }
 
@@ -66,6 +72,8 @@ struct PINAuthView: View {
                     .onTapGesture {
                         isKeyboardActive = true
                     }
+                    .animation(.easeOut(duration: 0.2), value: index < value.count)
+
             }
         }
     }

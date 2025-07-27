@@ -13,49 +13,56 @@ struct PINSetupView: View {
     @ObservedObject var viewModel: PINSetupViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            Text(viewModel.step == .enter ? "Create your PIN" : "Confirm your PIN")
-                .font(.title.bold())
-                .padding(.bottom, 24)
-                .foregroundStyle(.textPrimary)
+        ZStack {
+            Color
+                .backgroundPrimary
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
 
-            pinDots(for: viewModel.currentInput)
+            VStack(spacing: 0) {
+                Text(viewModel.step == .enter ? "Create your PIN" : "Confirm your PIN")
+                    .font(.title.bold())
+                    .padding(.bottom, 24)
+                    .foregroundStyle(.textPrimary)
 
-            if let error = viewModel.errorMessage {
-                Text(error)
-                    .foregroundColor(.error)
-                    .font(.caption.bold())
-                    .padding(.top, 12)
-            }
+                pinDots(for: viewModel.currentInput)
 
-            if viewModel.step == .confirm {
-                Button("Reset") {
-                    viewModel.reset()
-                    isKeyboardActive = true
+                if let error = viewModel.errorMessage {
+                    Text(error)
+                        .foregroundColor(.error)
+                        .font(.caption.bold())
+                        .padding(.top, 12)
                 }
-                .font(.subheadline.bold())
-                .foregroundStyle(.action)
-                .padding(.top, 24)
-            }
 
-            SecureField("", text: viewModel.bindingForCurrentStep)
-                .keyboardType(.numberPad)
-                .textContentType(.oneTimeCode)
-                .frame(width: 0, height: 0)
-                .focused($isKeyboardActive)
-                .onChange(of: viewModel.currentInput) { _, newValue in
-                    if newValue.count == 4 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                            viewModel.handleCompletion {
-                                dismiss()
+                if viewModel.step == .confirm {
+                    Button("Reset") {
+                        viewModel.reset()
+                        isKeyboardActive = true
+                    }
+                    .font(.subheadline.bold())
+                    .foregroundStyle(.action)
+                    .padding(.top, 24)
+                }
+
+                SecureField("", text: viewModel.bindingForCurrentStep)
+                    .keyboardType(.numberPad)
+                    .textContentType(.oneTimeCode)
+                    .frame(width: 0, height: 0)
+                    .focused($isKeyboardActive)
+                    .onChange(of: viewModel.currentInput) { _, newValue in
+                        if newValue.count == 4 {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                viewModel.handleCompletion {
+                                    dismiss()
+                                }
                             }
                         }
                     }
-                }
-        }
-        .padding()
-        .onAppear {
-            isKeyboardActive = true
+            }
+            .padding()
+            .onAppear {
+                isKeyboardActive = true
+            }
         }
     }
 
@@ -69,6 +76,7 @@ struct PINSetupView: View {
                     .onTapGesture {
                         isKeyboardActive = true
                     }
+                    .animation(.easeOut(duration: 0.2), value: index < value.count)
             }
         }
     }
