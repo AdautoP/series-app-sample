@@ -11,6 +11,7 @@ import SwiftUI
 protocol ShowsListViewModelType: ObservableObject {
     var state: LoadableState<[Show]> { get }
     var isLoadingBottom: Bool { get }
+    var title: String { get }
 
     var searchQuery: String { get set }
     var searchState: LoadableState<[Show]> { get }
@@ -28,6 +29,7 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
     private var canLoadMore = true
     private var cancellables = Set<AnyCancellable>()
     private let router: any ShowsListRouterType
+    var title: String = "All Shows"
 
     @Published var searchQuery: String = ""
     @Published var searchState: LoadableState<[Show]> = .success([])

@@ -25,7 +25,7 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
         }
         .background(.backgroundPrimary)
         .searchable(text: $viewModel.searchQuery, prompt: Text("Search shows…"))
-        .navigationTitle("All shows")
+        .navigationTitle(viewModel.title)
         .task {
             await viewModel.onAppear()
         }
@@ -93,6 +93,7 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
 
 class MockShowListViewModel: ShowsListViewModelType {
 
+    var title: String = "Shows"
     
     var searchQuery: String = ""
 

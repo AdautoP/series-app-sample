@@ -38,6 +38,9 @@
 		30D220152E36628A00C480F6 /* MovieListSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220122E36628A00C480F6 /* MovieListSampleUITests.swift */; };
 		30D220162E36628A00C480F6 /* MovieListSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220132E36628A00C480F6 /* MovieListSampleUITestsLaunchTests.swift */; };
 		30D220682E366AA000C480F6 /* ShowsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220672E366AA000C480F6 /* ShowsListCoordinator.swift */; };
+		30D2206F2E366DF400C480F6 /* FavoritesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2206E2E366DDB00C480F6 /* FavoritesListRouter.swift */; };
+		30D220712E366E7000C480F6 /* FavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220702E366E7000C480F6 /* FavoritesListViewModel.swift */; };
+		30D220732E3670AD00C480F6 /* TabBarAppearanceModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220722E3670AD00C480F6 /* TabBarAppearanceModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		30D220652E3667C400C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
 		30D220662E3667C400C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
 		30D220672E366AA000C480F6 /* ShowsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListCoordinator.swift; sourceTree = "<group>"; };
+		30D2206E2E366DDB00C480F6 /* FavoritesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListRouter.swift; sourceTree = "<group>"; };
+		30D220702E366E7000C480F6 /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
+		30D220722E3670AD00C480F6 /* TabBarAppearanceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearanceModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 		30D21FDA2E36625700C480F6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				30D220722E3670AD00C480F6 /* TabBarAppearanceModifier.swift */,
 				30D21FCC2E36625700C480F6 /* DesignSystem */,
 				30D21FD02E36625700C480F6 /* Network */,
 				30D21FD62E36625700C480F6 /* Views */,
@@ -236,7 +243,7 @@
 		30D21FEF2E36625700C480F6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				30D220692E366B1200C480F6 /* Favorites */,
+				30D2206D2E366DC300C480F6 /* Favorites */,
 				30D21FEE2E36625700C480F6 /* Shows */,
 			);
 			path = Scenes;
@@ -271,9 +278,11 @@
 			path = SeriesAppSampleUITests;
 			sourceTree = "<group>";
 		};
-		30D220692E366B1200C480F6 /* Favorites */ = {
+		30D2206D2E366DC300C480F6 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				30D220702E366E7000C480F6 /* FavoritesListViewModel.swift */,
+				30D2206E2E366DDB00C480F6 /* FavoritesListRouter.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -424,12 +433,14 @@
 				30D21FF92E36625700C480F6 /* CloseButton.swift in Sources */,
 				30D21FFA2E36625700C480F6 /* TransparentNavigationModifier.swift in Sources */,
 				30D21FFB2E36625700C480F6 /* AppRootView.swift in Sources */,
+				30D220712E366E7000C480F6 /* FavoritesListViewModel.swift in Sources */,
 				30D21FFC2E36625700C480F6 /* EpisodeDetailViewModel.swift in Sources */,
 				30D21FFD2E36625700C480F6 /* PlaceholderImageSize.swift in Sources */,
 				30D21FFE2E36625700C480F6 /* DSColors.swift in Sources */,
 				30D21FFF2E36625700C480F6 /* ShowRowView.swift in Sources */,
 				30D220002E36625700C480F6 /* ShowsListView.swift in Sources */,
 				30D220012E36625700C480F6 /* ShowDetailView.swift in Sources */,
+				30D220732E3670AD00C480F6 /* TabBarAppearanceModifier.swift in Sources */,
 				30D220022E36625700C480F6 /* Show.swift in Sources */,
 				30D220032E36625700C480F6 /* Episode.swift in Sources */,
 				30D220042E36625700C480F6 /* NetworkRequest.swift in Sources */,
@@ -441,6 +452,7 @@
 				30D2200A2E36625700C480F6 /* ShowsService.swift in Sources */,
 				30D220682E366AA000C480F6 /* ShowsListCoordinator.swift in Sources */,
 				30D2200B2E36625700C480F6 /* EpisodeDetailView.swift in Sources */,
+				30D2206F2E366DF400C480F6 /* FavoritesListRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
