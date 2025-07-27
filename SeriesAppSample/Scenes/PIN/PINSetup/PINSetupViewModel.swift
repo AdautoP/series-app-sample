@@ -9,9 +9,6 @@
 import Foundation
 import SwiftUI
 
-import Foundation
-import SwiftUI
-
 final class PINSetupViewModel: ObservableObject {
     enum Step {
         case enter
@@ -23,9 +20,12 @@ final class PINSetupViewModel: ObservableObject {
     @Published var confirmPIN: String = ""
     @Published var errorMessage: String?
 
+    private let storage: PINStorageType
     var onClose: (() -> Void)?
 
-    init(onClose: (() -> Void)?) {
+    init(storage: PINStorageType = PINStorage.shared,
+         onClose: (() -> Void)? = nil) {
+        self.storage = storage
         self.onClose = onClose
     }
 
@@ -35,7 +35,7 @@ final class PINSetupViewModel: ObservableObject {
 
     var bindingForCurrentStep: Binding<String> {
         Binding(
-            get: { [weak self] in self?.currentInput ?? "" },
+            get: { self.currentInput },
             set: { [weak self] newValue in
                 guard let self = self else { return }
                 let trimmed = String(newValue.prefix(4))
@@ -55,8 +55,9 @@ final class PINSetupViewModel: ObservableObject {
             step = .confirm
         case .confirm:
             if confirmPIN == enteredPIN {
-                PINStorage.savePin(confirmPIN)
+                storage.save(pin: confirmPIN)
                 onClose?()
+                onSuccess()
             } else {
                 errorMessage = "PINs do not match"
                 confirmPIN = ""

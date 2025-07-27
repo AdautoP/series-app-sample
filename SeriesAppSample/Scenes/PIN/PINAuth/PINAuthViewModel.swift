@@ -15,11 +15,12 @@ final class PINAuthViewModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var biometricAvailable: Bool = false
 
+    private let storage: PINStorageType
     var onClose: (() -> Void)?
 
-    init(onClose: (() -> Void)? = nil) {
+    init(storage: PINStorageType = PINStorage.shared, onClose: (() -> Void)? = nil) {
+        self.storage = storage
         self.onClose = onClose
-        checkBiometricsAvailability()
     }
 
     private func checkBiometricsAvailability() {
@@ -29,7 +30,7 @@ final class PINAuthViewModel: ObservableObject {
     }
 
     func validatePIN() {
-        if PINStorage.validate(pin: pin) {
+        if storage.validate(pin: pin) {
             onClose?()
         } else {
             errorMessage = "Invalid PIN"

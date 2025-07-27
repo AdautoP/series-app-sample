@@ -9,50 +9,49 @@
 import Foundation
 import Security
 
-enum PINStorage {
-    private static let service = "com.adauto.SeriesAppSample"
-    private static let account = "user_pin"
+protocol PINStorageType {
+    var hasPin: Bool { get }
+    func save(pin: String)
+    func validate(pin: String) -> Bool
+}
 
-    static var hasPin: Bool {
-        return loadPin() != nil
+final class PINStorage: PINStorageType {
+    static let shared = PINStorage()
+
+    private let service = "com.adauto.SeriesAppSample"
+    private let account = "user_pin"
+
+    var hasPin: Bool {
+        loadPIN() != nil
     }
 
-    static func savePin(_ pin: String) {
-        deletePin() // Remove caso já exista
-
+    func save(pin: String) {
         guard let data = pin.data(using: .utf8) else { return }
-
         let query: [String: Any] = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrService as String : service,
-            kSecAttrAccount as String : account,
-            kSecValueData as String   : data
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
         ]
-
-        SecItemAdd(query as CFDictionary, nil)
-    }
-
-    static func validate(pin: String) -> Bool {
-        return pin == loadPin()
-    }
-
-    static func deletePin() {
-        let query: [String: Any] = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrService as String : service,
-            kSecAttrAccount as String : account
-        ]
-
         SecItemDelete(query as CFDictionary)
+
+        let attributes: [String: Any] = query.merging([
+            kSecValueData as String: data
+        ]) { $1 }
+
+        SecItemAdd(attributes as CFDictionary, nil)
     }
 
-    private static func loadPin() -> String? {
+    func validate(pin: String) -> Bool {
+        return loadPIN() == pin
+    }
+
+    private func loadPIN() -> String? {
         let query: [String: Any] = [
-            kSecClass as String       : kSecClassGenericPassword,
-            kSecAttrService as String : service,
-            kSecAttrAccount as String : account,
-            kSecReturnData as String  : kCFBooleanTrue!,
-            kSecMatchLimit as String  : kSecMatchLimitOne
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecAttrAccount as String: account,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne
         ]
 
         var result: AnyObject?

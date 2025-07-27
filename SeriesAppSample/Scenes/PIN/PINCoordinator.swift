@@ -30,14 +30,19 @@ protocol PINRouterType: ObservableObject, Identifiable {
 
 class PINRouter: PINRouterType, ObservableObject {
     var id: UUID = .init()
+    private let storage: PINStorageType
 
     @Published var path: NavigationPath = NavigationPath()
     @Published var sheet: PINRoute?
     @Published var fullScreen: PINRoute?
 
+    init(pinStorage: PINStorageType = PINStorage.shared) {
+        self.storage = pinStorage
+    }
+
     @ViewBuilder
     func build(_ onClose: (() -> Void)?) -> any View {
-        if PINStorage.hasPin {
+        if storage.hasPin {
             PINAuthView(viewModel: PINAuthViewModel(onClose: onClose))
         } else {
             PINSetupView(viewModel: PINSetupViewModel(onClose: onClose))
