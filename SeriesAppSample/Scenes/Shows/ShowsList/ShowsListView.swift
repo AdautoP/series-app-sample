@@ -45,7 +45,9 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .contentShape(Rectangle())
-                        .listRowSeparator(.hidden)
+                        .listRowSeparator(show == shows.first ? .hidden : .visible, edges: .top)
+                        .listRowSeparator(show == shows.last ? .hidden : .visible, edges: .bottom)
+                        .listRowSeparatorTint(.divider)
                         .listRowBackground(Color.clear)
                         .onTapGesture {
                             viewModel.tapShow(show)
@@ -78,7 +80,9 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
                 ShowRowView(show: show)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .contentShape(Rectangle())
-                    .listRowSeparator(.hidden)
+                    .listRowSeparator(show == shows.first ? .hidden : .visible, edges: .top)
+                    .listRowSeparator(show == shows.last ? .hidden : .visible, edges: .bottom)
+                    .listRowSeparatorTint(.divider)
                     .listRowBackground(Color.clear)
                     .onTapGesture {
                         viewModel.tapShow(show)

@@ -35,7 +35,7 @@ struct EpisodeDetailView<ViewModel: EpisodeDetailViewModelType>: View {
                             .foregroundStyle(.accentPrimary)
 
                         Text("Season \(viewModel.data.season), Episode \(viewModel.data.number)")
-                            .font(.subheadline)
+                            .font(.subheadline.bold())
                             .foregroundStyle(.accentSecondary)
 
                         if let summary = viewModel.data.summary {

@@ -33,6 +33,7 @@ struct ShowRowView: View {
                             .font(.caption.bold())
                             .foregroundColor(.action)
                     }
+                    .padding(.top, 4)
                 }
 
                 Spacer()
@@ -40,7 +41,7 @@ struct ShowRowView: View {
                 if !show.genres.isEmpty {
                     Text(show.genres.joined(separator: ", "))
                         .font(.caption.weight(.semibold))
-                        .foregroundColor(.textSecondary)
+                        .foregroundColor(.accentSecondary)
                 }
             }
             .padding(.vertical, 16)

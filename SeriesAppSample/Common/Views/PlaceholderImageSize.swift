@@ -25,7 +25,7 @@ struct PlaceholderImage: View {
 
     var body: some View {
         Rectangle()
-            .fill(Color.backgroundSecondary.opacity(0.2))
+            .fill(Color.backgroundSecondary)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .overlay(
                 Image(systemName: "photo")
