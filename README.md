@@ -27,8 +27,6 @@ The app follows a layered and modular architecture:
 - Search Favorite shows by name
 - Set PIN for accessing the app and use biometrics if available 
 
----
-
 ## 📦 Dependencies
 
 This project uses:
@@ -36,8 +34,6 @@ This project uses:
 - Combine
 - CoreData
 - XCTest for unit testing
-
----
 
 ## 🧪 Tests
 
