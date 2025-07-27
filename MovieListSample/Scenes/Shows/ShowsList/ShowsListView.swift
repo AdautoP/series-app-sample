@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
 
