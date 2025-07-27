@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ShowDetailData: Hashable, Identifiable, Equatable {
     var id: Int
@@ -57,18 +58,22 @@ final class ShowDetailViewModel: ShowDetailViewModelType {
     private(set) var data: ShowDetailData
     private let service: ShowsServiceType
     private let router: any ShowsListRouterType
+    private let coreDataContainer: NSPersistentContainer
 
     @Published var seasonsState: LoadableState<[Season]> = .idle
     @Published var isFavorite: Bool = false
 
     init(show: ShowDetailData,
          router: any ShowsListRouterType,
-         service: ShowsServiceType = ShowsService()) {
+         service: ShowsServiceType = ShowsService(),
+         coreDataContainer: NSPersistentContainer = PersistenceController.shared.container
+    ) {
         self.data = show
         self.service = service
         self.router = router
+        self.coreDataContainer = coreDataContainer
 
-        self.isFavorite = FavoriteShow.isFavorite(id: data.id, context: PersistenceController.shared.container.viewContext)
+        self.isFavorite = FavoriteShow.isFavorite(id: data.id, context: coreDataContainer.viewContext)
     }
 
     @MainActor
@@ -98,7 +103,7 @@ final class ShowDetailViewModel: ShowDetailViewModelType {
     }
 
     func toggleFavorite() {
-        FavoriteShow.toggle(id: data.id, context: PersistenceController.shared.container.viewContext)
-        isFavorite = FavoriteShow.isFavorite(id: data.id, context: PersistenceController.shared.container.viewContext)
+        FavoriteShow.toggle(id: data.id, context: coreDataContainer.viewContext)
+        isFavorite = FavoriteShow.isFavorite(id: data.id, context: coreDataContainer.viewContext)
     }
 }

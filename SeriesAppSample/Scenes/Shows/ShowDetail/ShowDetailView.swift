@@ -91,8 +91,8 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
         }
         .frame(maxWidth: .infinity)
         .background(.backgroundPrimary)
-        .task {
-            await viewModel.onAppear()
+        .onAppear {
+            Task { await viewModel.onAppear() }
         }
     }
 }

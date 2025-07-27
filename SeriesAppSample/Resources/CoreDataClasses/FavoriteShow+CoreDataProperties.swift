@@ -44,4 +44,15 @@ extension FavoriteShow: Identifiable {
         let count = (try? context.count(for: request)) ?? 0
         return count > 0
     }
+
+    static func fetchAll(context: NSManagedObjectContext) -> [FavoriteShow] {
+        let request: NSFetchRequest<FavoriteShow> = FavoriteShow.fetchRequest()
+        request.sortDescriptors = []
+
+        do {
+            return try context.fetch(request)
+        } catch {
+            return []
+        }
+    }
 }

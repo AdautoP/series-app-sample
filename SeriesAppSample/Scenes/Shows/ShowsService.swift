@@ -11,7 +11,11 @@ protocol ShowsServiceType {
     func searchShows(for query: String) async -> Result<[SearchResult], NetworkError>
 }
 
-final class ShowsService: ShowsServiceType {
+protocol FavoritesServiceType {
+    func getShows(from ids: [Int]) async -> Result<[Show], NetworkError>
+}
+
+final class ShowsService: ShowsServiceType, FavoritesServiceType {
     private let handler: NetworkHandlerType
 
     init(handler: NetworkHandlerType = NetworkHandler.shared) {
@@ -36,5 +40,31 @@ final class ShowsService: ShowsServiceType {
                                      method: .get,
                                      queryItems: [.init(name: "q", value: query)])
         return await handler.execute(request)
+    }
+
+    func getShows(from ids: [Int]) async -> Result<[Show], NetworkError> {
+        guard ids.count > 0 else { return .success([]) }
+        var shows: [Show] = []
+
+        await withTaskGroup(of: Result<Show, NetworkError>.self) { group in
+            for id in ids {
+                group.addTask {
+                    let request = NetworkRequest(path: "/shows/\(id)", method: .get)
+                    return await self.handler.execute(request)
+                }
+            }
+
+            for await result in group {
+                if case let .success(show) = result {
+                    shows.append(show)
+                }
+            }
+        }
+
+        if !shows.isEmpty {
+            return .success(shows.sorted(by: { $0.name < $1.name }))
+        } else {
+            return .failure(.statusCode(404, data: nil))
+        }
     }
 }
