@@ -20,18 +20,36 @@ enum AppTab: Hashable {
     }
 }
 
-struct AppCoordinatorView: View {
-    @StateObject private var showsRouter = ShowsListRouter()
-    @StateObject private var favoritesRouter = FavoritesListRouter()
+protocol AppRouterType: ObservableObject {
+    func build(_ tab: AppTab) -> any View
+}
+
+class AppRouter: AppRouterType {
+    @ViewBuilder
+    func build(_ tab: AppTab) -> any View {
+        switch tab {
+        case .allShows:
+            ShowsListCoordinatorView(router: ShowsListRouter())
+
+
+        case .favorites:
+            ShowsListCoordinatorView(router: FavoritesListRouter())
+        }
+    }
+}
+
+struct AppCoordinatorView<Router: AppRouterType>: View {
+
+    @ObservedObject var router: Router
 
     var body: some View {
         TabView {
-            ShowsListCoordinatorView(router: showsRouter)
+            router.build(.allShows).erased
                 .tabItem {
                     Label(AppTab.allShows.title, systemImage: AppTab.allShows.icon)
                 }
 
-            ShowsListCoordinatorView(router: favoritesRouter)
+            router.build(.favorites).erased
                 .tabItem {
                     Label(AppTab.favorites.title, systemImage: AppTab.favorites.icon)
                 }
@@ -44,9 +62,10 @@ struct AppCoordinatorView: View {
 
 @main
 struct AppRootView: App {
+    private let appRouter = AppRouter()
     var body: some Scene {
         WindowGroup {
-            AppCoordinatorView()
+            AppCoordinatorView(router: appRouter)
                 .task {
                     let model = PersistenceController.shared.container.managedObjectModel
                     print("Entities:", model.entities.map(\.name))
