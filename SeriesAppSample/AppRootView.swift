@@ -15,7 +15,7 @@ enum AppTab: Hashable {
     var icon: String {
         switch self {
         case .allShows: "tv"
-        case .favorites: "star"
+        case .favorites: "bookmark"
         }
     }
 }

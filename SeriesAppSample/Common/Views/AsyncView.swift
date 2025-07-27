@@ -54,11 +54,14 @@ struct AsyncView<Success: Equatable, Content: View, Loading: View, ErrorContent:
     var body: some View {
         Group {
             switch state {
-            case .idle, .loading:
+            case .idle:
+                Color.clear
+
+            case .loading:
                 if showLoadingOverlay, let last = lastSuccessValue {
                     ZStack {
                         content(last)
-                        loadingOverlay()
+                        loadingView()
                     }
                 } else {
                     loadingView()
@@ -82,13 +85,6 @@ struct AsyncView<Success: Equatable, Content: View, Loading: View, ErrorContent:
     private func trackSuccess(_ newValue: LoadableState<Success>) {
         if case .success(let value) = newValue {
             lastSuccessValue = value
-        }
-    }
-
-    private func loadingOverlay() -> some View {
-        ZStack {
-            Color.black.opacity(0.25).ignoresSafeArea()
-            loadingView()
         }
     }
 }

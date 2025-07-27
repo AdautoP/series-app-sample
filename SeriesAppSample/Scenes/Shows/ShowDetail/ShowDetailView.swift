@@ -45,7 +45,7 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                                 Button {
                                     viewModel.toggleFavorite()
                                 } label: {
-                                    Image(systemName: viewModel.isFavorite ? "star.fill" : "star")
+                                    Image(systemName: viewModel.isFavorite ? "bookmark.fill" : "bookmark")
                                         .resizable()
                                         .frame(width: 24, height: 24)
                                         .foregroundColor(.action)
