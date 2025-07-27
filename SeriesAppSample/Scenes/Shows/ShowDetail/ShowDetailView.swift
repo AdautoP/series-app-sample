@@ -35,9 +35,22 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                         .allowsHitTesting(false) // para não interceptar toques
 
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(viewModel.data.name)
-                                .font(.title.bold())
-                                .foregroundColor(.accentPrimary)
+                            HStack(alignment: .center) {
+                                Text(viewModel.data.name)
+                                    .font(.title.bold())
+                                    .foregroundColor(.accentPrimary)
+
+                                Spacer()
+
+                                Button {
+                                    viewModel.toggleFavorite()
+                                } label: {
+                                    Image(systemName: viewModel.isFavorite ? "star.fill" : "star")
+                                        .resizable()
+                                        .frame(width: 24, height: 24)
+                                        .foregroundColor(.action)
+                                }
+                            }
 
                             Text(viewModel.data.genresText)
                                 .font(.subheadline.bold())
@@ -85,6 +98,10 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
 }
 
 private class MockShowDetailViewModel: ShowDetailViewModelType {
+    var isFavorite: Bool = false
+    
+    func toggleFavorite() {}
+    
     var data: ShowDetailData = .init(from: .mock)
 
     var seasonsState: LoadableState<[Season]> = .loading

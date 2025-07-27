@@ -15,7 +15,7 @@ enum AppTab: Hashable {
     var icon: String {
         switch self {
         case .allShows: "tv"
-        case .favorites: "heart"
+        case .favorites: "star"
         }
     }
 }
@@ -47,6 +47,10 @@ struct AppRootView: App {
     var body: some Scene {
         WindowGroup {
             AppCoordinatorView()
+                .task {
+                    let model = PersistenceController.shared.container.managedObjectModel
+                    print("Entities:", model.entities.map(\.name))
+                }
         }
     }
 }

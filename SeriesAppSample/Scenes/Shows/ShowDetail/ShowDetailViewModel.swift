@@ -46,6 +46,8 @@ extension ShowDetailData {
 protocol ShowDetailViewModelType: ObservableObject {
     var data: ShowDetailData { get }
     var seasonsState: LoadableState<[Season]> { get }
+    var isFavorite: Bool { get }
+    func toggleFavorite()
 
     func onAppear() async
     func tapEpisode(_ episode: Episode)
@@ -57,6 +59,7 @@ final class ShowDetailViewModel: ShowDetailViewModelType {
     private let router: any ShowsListRouterType
 
     @Published var seasonsState: LoadableState<[Season]> = .idle
+    @Published var isFavorite: Bool = false
 
     init(show: ShowDetailData,
          router: any ShowsListRouterType,
@@ -64,6 +67,8 @@ final class ShowDetailViewModel: ShowDetailViewModelType {
         self.data = show
         self.service = service
         self.router = router
+
+        self.isFavorite = FavoriteShow.isFavorite(id: data.id, context: PersistenceController.shared.container.viewContext)
     }
 
     @MainActor
@@ -90,5 +95,10 @@ final class ShowDetailViewModel: ShowDetailViewModelType {
 
     func tapEpisode(_ episode: Episode) {
         router.route(to: .episodeDetail(EpisodeDetailData(from: episode)))
+    }
+
+    func toggleFavorite() {
+        FavoriteShow.toggle(id: data.id, context: PersistenceController.shared.container.viewContext)
+        isFavorite = FavoriteShow.isFavorite(id: data.id, context: PersistenceController.shared.container.viewContext)
     }
 }
