@@ -36,9 +36,7 @@ extension ShowDetailData {
                           .characterEncoding: String.Encoding.utf8.rawValue
                       ],
                       documentAttributes: nil
-                  ) else {
-                return nil
-            }
+                  ) else { return nil }
 
             return AttributedString(nsAttr.string)
         }()
@@ -50,21 +48,28 @@ protocol ShowDetailViewModelType: ObservableObject {
     var seasonsState: LoadableState<[Season]> { get }
 
     func onAppear() async
+    func tapEpisode(_ episode: Episode)
 }
 
 final class ShowDetailViewModel: ShowDetailViewModelType {
     private(set) var data: ShowDetailData
     private let service: ShowsServiceType
+    private let router: any AppRouterType
 
     @Published var seasonsState: LoadableState<[Season]> = .idle
 
-    init(show: ShowDetailData, service: ShowsServiceType = ShowsService()) {
+    init(show: ShowDetailData,
+         router: any AppRouterType,
+         service: ShowsServiceType = ShowsService()) {
         self.data = show
         self.service = service
+        self.router = router
     }
 
     @MainActor
     func onAppear() async {
+        guard case .idle = seasonsState else { return }
+
         seasonsState = .loading
 
         let result = await service.getEpisodes(for: data.id)
@@ -81,5 +86,9 @@ final class ShowDetailViewModel: ShowDetailViewModelType {
         case  .failure(let error):
             seasonsState = .failure(error)
         }
+    }
+
+    func tapEpisode(_ episode: Episode) {
+        router.route(to: .episodeDetail(EpisodeDetailData(from: episode)))
     }
 }

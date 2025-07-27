@@ -91,7 +91,7 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
     }
 }
 
-class MockVM: ShowsListViewModelType {
+class MockShowListViewModel: ShowsListViewModelType {
 
     
     var searchQuery: String = ""
@@ -107,7 +107,7 @@ class MockVM: ShowsListViewModelType {
 }
 
 #Preview {
-    ShowsListView(viewModel: MockVM())
+    ShowsListView(viewModel: MockShowListViewModel())
 }
 
 

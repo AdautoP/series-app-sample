@@ -18,13 +18,13 @@ struct EpisodeCardView: View {
                         .resizable()
                         .scaledToFill()
                 } placeholder: {
-                    Color.gray.opacity(0.3)
+                    PlaceholderImage(size: .small)
                 }
                 .frame(width: 140, height: 80)
                 .clipped()
                 .cornerRadius(8)
             } else {
-                Color.gray.opacity(0.3)
+                PlaceholderImage(size: .small)
             }
 
             Text(episode.name)

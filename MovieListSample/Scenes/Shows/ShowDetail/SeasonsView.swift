@@ -18,6 +18,8 @@ import SwiftUI
 
 struct SeasonsView: View {
     let seasons: [Season]
+    let onEpisodeTap: (Episode) -> Void
+
     @State private var selectedSeason: Season?
 
     var body: some View {
@@ -47,6 +49,9 @@ struct SeasonsView: View {
                     LazyHGrid(rows: columns, spacing: 16) {
                         ForEach(selected.episodes) { episode in
                             EpisodeCardView(episode: episode)
+                                .onTapGesture {
+                                    onEpisodeTap(episode)
+                                }
                         }
                     }
                     .padding(.vertical, 4)

@@ -58,29 +58,18 @@ struct ShowRowView: View {
                         .resizable()
                         .scaledToFill()
                 } placeholder: {
-                    placeholderImage
+                    PlaceholderImage(size: .small)
                 }
                 .frame(width: 60, height: 90)
                 .cornerRadius(8)
                 .clipped()
             } else {
-                placeholderImage
+                PlaceholderImage(size: .small)
             }
         }
         .frame(width: 60, height: 90)
         .cornerRadius(8)
         .clipped()
-    }
-
-    private var placeholderImage: some View {
-        Rectangle()
-            .fill(Color.gray.opacity(0.2))
-            .frame(width: 60, height: 90)
-            .overlay(
-                Image(systemName: "photo")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-            )
     }
 }
 

@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct BackButton: View {
+struct CloseButton: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         Button(action: { dismiss() }) {
-            Image(systemName: "chevron.left")
+            Image(systemName: "xmark")
                 .font(.title2.weight(.medium))
                 .padding(10)
                 .background(.regularMaterial)

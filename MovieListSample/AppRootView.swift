@@ -6,11 +6,13 @@ enum AppRoute: Hashable, Identifiable {
         switch self {
         case .home: return 0
         case .showDetail(let show): return show.id
+        case .episodeDetail(let episode): return episode.id
         }
     }
 
     case home
     case showDetail(ShowDetailData)
+    case episodeDetail(EpisodeDetailData)
 }
 
 protocol AppRouterType: ObservableObject {
@@ -24,7 +26,12 @@ protocol AppRouterType: ObservableObject {
 
 
 class AppRouter: AppRouterType, ObservableObject {
-    @Published var path: NavigationPath = NavigationPath()
+    @Published var path: NavigationPath = NavigationPath() {
+        didSet {
+            if path.isEmpty { showDetailViewModel = nil }
+        }
+    }
+    
     @Published var sheet: AppRoute?
     @Published var fullScreen: AppRoute?
 
@@ -32,12 +39,19 @@ class AppRouter: AppRouterType, ObservableObject {
         ShowsListViewModel(router: self)
     }()
 
+    private var showDetailViewModel: ShowDetailViewModel?
+
     func route(to route: AppRoute) {
         switch route {
         case .home:
             path.append(route)
-        case .showDetail:
+        case .showDetail(let showData):
+            if showDetailViewModel?.data.id != showData.id {
+                showDetailViewModel = ShowDetailViewModel(show: showData, router: self)
+            }
             path.append(route)
+        case .episodeDetail:
+            sheet = route
         }
     }
 
@@ -46,8 +60,12 @@ class AppRouter: AppRouterType, ObservableObject {
         switch route {
         case .home:
             ShowsListView(viewModel: showsListViewModel)
-        case .showDetail(let showData):
-            ShowDetailView(viewModel: ShowDetailViewModel(show: showData))
+        case .showDetail:
+            if let showDetailViewModel {
+                ShowDetailView(viewModel: showDetailViewModel)
+            }
+        case .episodeDetail(let episode):
+            EpisodeDetailView(viewModel: EpisodeDetailViewModel(episode: episode))
         }
     }
 }

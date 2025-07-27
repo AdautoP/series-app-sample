@@ -22,9 +22,9 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                                 .resizable()
                                 .scaledToFit()
                         } placeholder: {
-                            Color.gray.opacity(0.3)
-                                .aspectRatio(2/3, contentMode: .fit)
+                            PlaceholderImage(size: .large)
                         }
+                        .aspectRatio(2/3, contentMode: .fit)
 
                         LinearGradient(
                             gradient: Gradient(colors: [Color.black, Color.clear]),
@@ -69,7 +69,9 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                     .padding(.horizontal)
 
                 AsyncView(viewModel.seasonsState) { seasons in
-                    SeasonsView(seasons: seasons)
+                    SeasonsView(seasons: seasons) { episode in
+                        viewModel.tapEpisode(episode)
+                    }
                 }
                 .padding(.horizontal)
             }
@@ -82,6 +84,16 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
     }
 }
 
+private class MockShowDetailViewModel: ShowDetailViewModelType {
+    var data: ShowDetailData = .init(from: .mock)
+
+    var seasonsState: LoadableState<[Season]> = .loading
+
+    func onAppear() async {}
+    
+    func tapEpisode(_ episode: Episode) {}
+}
+
 #Preview {
-    ShowDetailView(viewModel: ShowDetailViewModel(show: ShowDetailData(from: .mock)))
+    ShowDetailView(viewModel: MockShowDetailViewModel())
 }
