@@ -88,9 +88,9 @@
 		30D2200F2E36627000C480F6 /* MovieListSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListSampleTests.swift; sourceTree = "<group>"; };
 		30D220122E36628A00C480F6 /* MovieListSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListSampleUITests.swift; sourceTree = "<group>"; };
 		30D220132E36628A00C480F6 /* MovieListSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		30D220172E3662BD00C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SeriesAppSample.app; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app"; sourceTree = "<absolute>"; };
-		30D220182E3662BD00C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/MovieListSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
-		30D220192E3662BD00C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
+		30D220642E3667C400C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeriesAppSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D220652E3667C400C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D220662E3667C400C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +124,9 @@
 				30D21FF22E36625700C480F6 /* SeriesAppSample */,
 				30D220102E36627000C480F6 /* SeriesAppSampleTests */,
 				30D220142E36628A00C480F6 /* SeriesAppSampleUITests */,
+				30D220642E3667C400C480F6 /* SeriesAppSample.app */,
+				30D220652E3667C400C480F6 /* SeriesAppSampleTests.xctest */,
+				30D220662E3667C400C480F6 /* SeriesAppSampleUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -286,7 +289,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSample;
-			productReference = 30D220172E3662BD00C480F6 /* SeriesAppSample.app */;
+			productReference = 30D220642E3667C400C480F6 /* SeriesAppSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		302226012E346930005A4EEC /* SeriesAppSampleTests */ = {
@@ -306,7 +309,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleTests;
-			productReference = 30D220182E3662BD00C480F6 /* SeriesAppSampleTests.xctest */;
+			productReference = 30D220652E3667C400C480F6 /* SeriesAppSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3022260B2E346930005A4EEC /* SeriesAppSampleUITests */ = {
@@ -326,7 +329,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleUITests;
-			productReference = 30D220192E3662BD00C480F6 /* SeriesAppSampleUITests.xctest */;
+			productReference = 30D220662E3667C400C480F6 /* SeriesAppSampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -467,7 +470,6 @@
 /* Begin XCBuildConfiguration section */
 		302226142E346930005A4EEC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30D21FDC2E36625700C480F6 /* SeriesAppSampleDebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -663,7 +665,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieListSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MovieListSample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeriesAppSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SeriesAppSample";
 			};
 			name = Debug;
 		};
@@ -682,7 +684,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieListSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MovieListSample";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SeriesAppSample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SeriesAppSample";
 			};
 			name = Release;
 		};

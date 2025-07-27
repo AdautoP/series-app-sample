@@ -6,7 +6,7 @@
 //
 
 import Testing
-@testable import MovieListSample
+@testable import SeriesAppSample
 
 struct MovieListSampleTests {
 
