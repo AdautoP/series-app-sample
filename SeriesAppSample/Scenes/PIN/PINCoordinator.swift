@@ -38,7 +38,7 @@ class PINRouter: PINRouterType, ObservableObject {
     @ViewBuilder
     func build(_ onClose: (() -> Void)?) -> any View {
         if PINStorage.hasPin {
-            PINAuthView(onClose: onClose)
+            PINAuthView(viewModel: PINAuthViewModel(onClose: onClose))
         } else {
             PINSetupView(viewModel: PINSetupViewModel(onClose: onClose))
         }

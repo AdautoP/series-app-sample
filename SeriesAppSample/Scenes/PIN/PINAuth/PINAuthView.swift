@@ -5,65 +5,69 @@
 //  Created by Adauto Pinheiro on 27/07/25.
 //
 
-
 import SwiftUI
-import LocalAuthentication
 
 struct PINAuthView: View {
-    @State private var pin: String = ""
-    @State private var errorMessage: String?
-    @Environment(\.dismiss) private var dismiss
-    var onClose: (() -> Void)?
+    @FocusState private var isKeyboardActive: Bool
+    @ObservedObject var viewModel: PINAuthViewModel
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 0) {
             Text("Enter your PIN")
                 .font(.title.bold())
+                .padding(.bottom, 24)
+                .foregroundStyle(.textPrimary)
 
-            SecureField("PIN", text: $pin)
+            pinDots(for: viewModel.pin)
+
+            if let error = viewModel.errorMessage {
+                Text(error)
+                    .foregroundColor(.error)
+                    .font(.caption.bold())
+                    .padding(.top, 12)
+            }
+
+            SecureField("", text: $viewModel.pin)
                 .keyboardType(.numberPad)
-                .textFieldStyle(.roundedBorder)
-
-            if let errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-                    .font(.caption)
-            }
-
-            Button("Unlock") {
-                if PINStorage.validate(pin: pin) {
-                    dismiss()
-                    onClose?()
-                } else {
-                    errorMessage = "Invalid PIN"
+                .textContentType(.oneTimeCode)
+                .frame(width: 0, height: 0)
+                .focused($isKeyboardActive)
+                .onChange(of: viewModel.pin) { _, newValue in
+                    if newValue.count == 4 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            viewModel.validatePIN()
+                        }
+                    }
                 }
-            }
-            .buttonStyle(.borderedProminent)
 
-            Button("Use Face ID / Touch ID") {
-                authenticateWithBiometrics()
+            if viewModel.biometricAvailable {
+                Button("Use Face ID / Touch ID") {
+                    viewModel.authenticateWithBiometrics()
+                }
+                .font(.subheadline.bold())
+                .padding(.top, 24)
+                .foregroundStyle(.action)
             }
-            .font(.footnote)
         }
         .padding()
         .onAppear {
-            authenticateWithBiometrics()
+            isKeyboardActive = true
+            viewModel.authenticateWithBiometrics()
         }
     }
 
-    private func authenticateWithBiometrics() {
-        let context = LAContext()
-        var error: NSError?
-
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Authenticate to access the app") { success, _ in
-                DispatchQueue.main.async {
-                    if success {
-                        dismiss()
-                        onClose?()
+    @ViewBuilder
+    private func pinDots(for value: String) -> some View {
+        HStack(spacing: 32) {
+            ForEach(0..<4, id: \.self) { index in
+                Circle()
+                    .fill(index < value.count ? Color.accentPrimary : Color.textPrimary)
+                    .frame(width: 32, height: 32)
+                    .onTapGesture {
+                        isKeyboardActive = true
                     }
-                }
             }
         }
     }
 }
+

@@ -49,6 +49,7 @@
 		30D220892E36A24600C480F6 /* PINSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220882E36A24600C480F6 /* PINSetupView.swift */; };
 		30D2208C2E36A25F00C480F6 /* PINAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208B2E36A25F00C480F6 /* PINAuthView.swift */; };
 		30D2208E2E36AE0900C480F6 /* PINSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */; };
+		30D220902E36B35400C480F6 /* PINAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		30D220882E36A24600C480F6 /* PINSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINSetupView.swift; sourceTree = "<group>"; };
 		30D2208B2E36A25F00C480F6 /* PINAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINAuthView.swift; sourceTree = "<group>"; };
 		30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINSetupViewModel.swift; sourceTree = "<group>"; };
+		30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINAuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +340,7 @@
 		30D2208A2E36A25200C480F6 /* PINAuth */ = {
 			isa = PBXGroup;
 			children = (
+				30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */,
 				30D2208B2E36A25F00C480F6 /* PINAuthView.swift */,
 			);
 			path = PINAuth;
@@ -490,6 +493,7 @@
 				30D2208E2E36AE0900C480F6 /* PINSetupViewModel.swift in Sources */,
 				30D2207D2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift in Sources */,
 				30D2207E2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift in Sources */,
+				30D220902E36B35400C480F6 /* PINAuthViewModel.swift in Sources */,
 				30D220892E36A24600C480F6 /* PINSetupView.swift in Sources */,
 				30D21FFA2E36625700C480F6 /* TransparentNavigationModifier.swift in Sources */,
 				30D21FFB2E36625700C480F6 /* AppRootView.swift in Sources */,

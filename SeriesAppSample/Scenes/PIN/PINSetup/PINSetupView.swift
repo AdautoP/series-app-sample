@@ -17,6 +17,7 @@ struct PINSetupView: View {
             Text(viewModel.step == .enter ? "Create your PIN" : "Confirm your PIN")
                 .font(.title.bold())
                 .padding(.bottom, 24)
+                .foregroundStyle(.textPrimary)
 
             pinDots(for: viewModel.currentInput)
 
