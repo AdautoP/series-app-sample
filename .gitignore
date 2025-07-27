@@ -1,0 +1,76 @@
+# === Xcode ===
+
+# Build generated
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# SwiftPM
+.swiftpm/
+.build/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Archives
+*.xcarchive
+
+# .DS_Store and other macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# User-specific Xcode files
+**/xcuserdata/
+**/*.xcuserstate
+
+# SPM cache
+.xcode.env
+.xcconfig.cache
+.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Logs
+*.log
+
+# Preview assets
+*.xcassets/Preview Content/
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*~
+
+# IDE configs
+.idea/
+.vscode/
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Localization temp files
+*.stringsdict~*
+*.strings~*
+
+# SwiftUI canvas previews
+CanvasPreviews/
+
+# Simulator logs
+core_simulator_device.log
