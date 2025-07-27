@@ -118,9 +118,6 @@
 		30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINSetupViewModel.swift; sourceTree = "<group>"; };
 		30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINAuthViewModel.swift; sourceTree = "<group>"; };
 		30D220912E36B50400C480F6 /* PINStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINStorage.swift; sourceTree = "<group>"; };
-		30D220932E36B56700C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SeriesAppSample.app; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app"; sourceTree = "<absolute>"; };
-		30D220942E36B56700C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
-		30D220952E36B56700C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
 		30D220BD2E36C03B00C480F6 /* ShowsListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewModelTests.swift; sourceTree = "<group>"; };
 		30D220C12E36C08800C480F6 /* MockShowsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShowsService.swift; sourceTree = "<group>"; };
 		30D220C52E36C2C900C480F6 /* ShowDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewModelTests.swift; sourceTree = "<group>"; };
@@ -129,6 +126,9 @@
 		30D220D22E36CA1000C480F6 /* ShowsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsServiceTests.swift; sourceTree = "<group>"; };
 		30D220D42E36CA5600C480F6 /* MockHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandler.swift; sourceTree = "<group>"; };
 		30D220D62E36CA5F00C480F6 /* MockShowsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShowsRouter.swift; sourceTree = "<group>"; };
+		30D220D82E36D6BD00C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SeriesAppSample.app; path = "/Users/adautopinheiro/Desktop/series-app-sample/build/Debug-iphoneos/SeriesAppSample.app"; sourceTree = "<absolute>"; };
+		30D220D92E36D6BD00C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/series-app-sample/build/Debug-iphoneos/SeriesAppSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
+		30D220DA2E36D6BD00C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/series-app-sample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +161,6 @@
 			children = (
 				30D21FF22E36625700C480F6 /* SeriesAppSample */,
 				30D220102E36627000C480F6 /* SeriesAppSampleTests */,
-				30D220142E36628A00C480F6 /* SeriesAppSampleUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -304,13 +303,6 @@
 			path = SeriesAppSampleTests;
 			sourceTree = "<group>";
 		};
-		30D220142E36628A00C480F6 /* SeriesAppSampleUITests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SeriesAppSampleUITests;
-			sourceTree = "<group>";
-		};
 		30D2206D2E366DC300C480F6 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,7 +407,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSample;
-			productReference = 30D220932E36B56700C480F6 /* SeriesAppSample.app */;
+			productReference = 30D220D82E36D6BD00C480F6 /* SeriesAppSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		302226012E346930005A4EEC /* SeriesAppSampleTests */ = {
@@ -435,7 +427,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleTests;
-			productReference = 30D220942E36B56700C480F6 /* SeriesAppSampleTests.xctest */;
+			productReference = 30D220D92E36D6BD00C480F6 /* SeriesAppSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3022260B2E346930005A4EEC /* SeriesAppSampleUITests */ = {
@@ -455,7 +447,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleUITests;
-			productReference = 30D220952E36B56700C480F6 /* SeriesAppSampleUITests.xctest */;
+			productReference = 30D220DA2E36D6BD00C480F6 /* SeriesAppSampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
