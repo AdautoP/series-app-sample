@@ -50,6 +50,7 @@
 		30D2208C2E36A25F00C480F6 /* PINAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208B2E36A25F00C480F6 /* PINAuthView.swift */; };
 		30D2208E2E36AE0900C480F6 /* PINSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */; };
 		30D220902E36B35400C480F6 /* PINAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */; };
+		30D220922E36B50400C480F6 /* PINStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D220912E36B50400C480F6 /* PINStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,9 +106,6 @@
 		30D2206E2E366DDB00C480F6 /* FavoritesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListRouter.swift; sourceTree = "<group>"; };
 		30D220702E366E7000C480F6 /* FavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewModel.swift; sourceTree = "<group>"; };
 		30D220722E3670AD00C480F6 /* TabBarAppearanceModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAppearanceModifier.swift; sourceTree = "<group>"; };
-		30D220742E3673AB00C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SeriesAppSample.app; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app"; sourceTree = "<absolute>"; };
-		30D220752E3673AB00C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
-		30D220762E3673AB00C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/SeriesAppSample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
 		30D220782E3673F400C480F6 /* SeriesAppSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SeriesAppSample.xcdatamodel; sourceTree = "<group>"; };
 		30D220792E36762500C480F6 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		30D2207B2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteShow+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -117,6 +115,10 @@
 		30D2208B2E36A25F00C480F6 /* PINAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINAuthView.swift; sourceTree = "<group>"; };
 		30D2208D2E36AE0900C480F6 /* PINSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINSetupViewModel.swift; sourceTree = "<group>"; };
 		30D2208F2E36B35400C480F6 /* PINAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINAuthViewModel.swift; sourceTree = "<group>"; };
+		30D220912E36B50400C480F6 /* PINStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PINStorage.swift; sourceTree = "<group>"; };
+		30D220932E36B56700C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeriesAppSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D220942E36B56700C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D220952E36B56700C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,9 @@
 				30D21FF22E36625700C480F6 /* SeriesAppSample */,
 				30D220102E36627000C480F6 /* SeriesAppSampleTests */,
 				30D220142E36628A00C480F6 /* SeriesAppSampleUITests */,
+				30D220932E36B56700C480F6 /* SeriesAppSample.app */,
+				30D220942E36B56700C480F6 /* SeriesAppSampleTests.xctest */,
+				30D220952E36B56700C480F6 /* SeriesAppSampleUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,6 +326,7 @@
 		30D220832E369E3E00C480F6 /* PIN */ = {
 			isa = PBXGroup;
 			children = (
+				30D220912E36B50400C480F6 /* PINStorage.swift */,
 				30D2208A2E36A25200C480F6 /* PINAuth */,
 				30D220872E36A24000C480F6 /* PINSetup */,
 				30D220852E369F9A00C480F6 /* PINCoordinator.swift */,
@@ -365,7 +371,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSample;
-			productReference = 30D220742E3673AB00C480F6 /* SeriesAppSample.app */;
+			productReference = 30D220932E36B56700C480F6 /* SeriesAppSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		302226012E346930005A4EEC /* SeriesAppSampleTests */ = {
@@ -385,7 +391,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleTests;
-			productReference = 30D220752E3673AB00C480F6 /* SeriesAppSampleTests.xctest */;
+			productReference = 30D220942E36B56700C480F6 /* SeriesAppSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3022260B2E346930005A4EEC /* SeriesAppSampleUITests */ = {
@@ -405,7 +411,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleUITests;
-			productReference = 30D220762E3673AB00C480F6 /* SeriesAppSampleUITests.xctest */;
+			productReference = 30D220952E36B56700C480F6 /* SeriesAppSampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -494,6 +500,7 @@
 				30D2207D2E3676D200C480F6 /* FavoriteShow+CoreDataClass.swift in Sources */,
 				30D2207E2E3676D200C480F6 /* FavoriteShow+CoreDataProperties.swift in Sources */,
 				30D220902E36B35400C480F6 /* PINAuthViewModel.swift in Sources */,
+				30D220922E36B50400C480F6 /* PINStorage.swift in Sources */,
 				30D220892E36A24600C480F6 /* PINSetupView.swift in Sources */,
 				30D21FFA2E36625700C480F6 /* TransparentNavigationModifier.swift in Sources */,
 				30D21FFB2E36625700C480F6 /* AppRootView.swift in Sources */,

@@ -53,19 +53,3 @@ struct PINCoordinatorView<Router: PINRouterType>: View {
         router.build(onClose).erased
     }
 }
-
-// MARK: MOCK
-
-enum PINStorage {
-    static var hasPin: Bool {
-        UserDefaults.standard.string(forKey: "user_pin") != nil
-    }
-
-    static func savePin(_ pin: String) {
-        UserDefaults.standard.set(pin, forKey: "user_pin")
-    }
-
-    static func validate(pin: String) -> Bool {
-        return pin == UserDefaults.standard.string(forKey: "user_pin")
-    }
-}
