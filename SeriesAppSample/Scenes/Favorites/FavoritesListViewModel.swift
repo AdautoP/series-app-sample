@@ -9,8 +9,6 @@ import CoreData
 import Combine
 import SwiftUI
 
-typealias FavoritesFullServiceType = FavoritesServiceType & ShowsServiceType
-
 final class FavoritesListViewModel: ShowsListViewModelType, ObservableObject {
     private var allShows: [Show] = []
     private var cancellables = Set<AnyCancellable>()
