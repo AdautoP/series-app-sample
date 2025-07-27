@@ -2,13 +2,9 @@
 
 A simple SwiftUI application that displays a list of TV shows, with the ability to search, view details, episodes per season, and manage favorites. Built with clean architecture and modular design.
 
-## 📸 Demo
+## 🎥 App Demo
 
-https://github.com/your-username/your-repo/assets/your-video-id
-
-*(Replace the URL above with the actual GitHub video link or upload the video to GitHub and update this section.)*
-
----
+[📽️ Watch the demo](https://github.com/AdautoP/series-app-sample/raw/main/SeriesSampleAppDemo.mp4)
 
 ## 🧱 Architecture
 
@@ -20,14 +16,16 @@ The app follows a layered and modular architecture:
 - **Service Layer**: Abstracted protocols and implementations for fetching data from the API.
 - **Routing Layer**: Coordinators built around `NavigationStack`, `fullScreenCover`, and `sheet`, managed via enums.
 
-### Features
-- Debounced search with separate state
-- Lazy loading for pagination (except favorites)
-- Modular view composition using protocols
-- ViewModel-driven routing (e.g., `ShowsListRouterType`)
-- Loadable state wrapper (`LoadableState<T>`) for consistent async handling
-- Core Data support for storing favorite shows
-- Unit tests with mocked dependencies
+### Required Features
+- Display All Shows
+- Search All Shows by name
+- Display Show Detail
+- Display Episode Detail
+
+### Optional Features
+- Show Favorite shows
+- Search Favorite shows by name
+- Set PIN for accessing the app and use biometrics if available 
 
 ---
 
@@ -36,14 +34,14 @@ The app follows a layered and modular architecture:
 This project uses:
 - SwiftUI
 - Combine
-- CoreData (via `NSPersistentContainer`)
+- CoreData
 - XCTest for unit testing
 
 ---
 
 ## 🧪 Tests
 
-Each `ViewModel` and service is fully unit tested with mocked services and coordinators.
+All show related `ViewModel` and service are fully unit tested with mocked services and coordinators.
 
 Example of test naming convention:
 ```swift
