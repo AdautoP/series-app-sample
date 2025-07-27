@@ -26,6 +26,8 @@ extension View {
 func applyOpaqueNavigationBarAppearance() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
+    appearance.shadowImage = UIImage()
+    appearance.shadowColor = .clear
     appearance.backgroundColor = UIColor(named: "backgroundPrimary") ?? .systemBackground
     appearance.largeTitleTextAttributes = [
         .foregroundColor: UIColor(named: "textPrimary") ?? .white

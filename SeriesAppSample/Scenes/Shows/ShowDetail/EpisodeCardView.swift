@@ -25,6 +25,7 @@ struct EpisodeCardView: View {
                 .cornerRadius(8)
             } else {
                 PlaceholderImage(size: .small)
+                    .frame(width: 140, height: 80)
             }
 
             Text(episode.name)

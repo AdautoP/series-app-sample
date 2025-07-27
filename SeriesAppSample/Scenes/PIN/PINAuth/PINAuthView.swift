@@ -67,13 +67,12 @@ struct PINAuthView: View {
         HStack(spacing: 32) {
             ForEach(0..<4, id: \.self) { index in
                 Circle()
-                    .fill(index < value.count ? Color.accentPrimary : Color.textPrimary)
+                    .fill(index < value.count ? Color.action : Color.textPrimary)
                     .frame(width: 32, height: 32)
                     .onTapGesture {
                         isKeyboardActive = true
                     }
                     .animation(.easeOut(duration: 0.2), value: index < value.count)
-
             }
         }
     }

@@ -23,8 +23,8 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                                 .scaledToFit()
                         } placeholder: {
                             PlaceholderImage(size: .large)
+                                .aspectRatio(2/3, contentMode: .fit)
                         }
-                        .aspectRatio(2/3, contentMode: .fit)
 
                         LinearGradient(
                             gradient: Gradient(colors: [Color.black, Color.clear]),
@@ -32,7 +32,7 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
                             endPoint: .top
                         )
                         .frame(height: 180)
-                        .allowsHitTesting(false) // para não interceptar toques
+                        .allowsHitTesting(false)
 
                         VStack(alignment: .leading, spacing: 4) {
                             HStack(alignment: .center) {
@@ -99,15 +99,15 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
 
 private class MockShowDetailViewModel: ShowDetailViewModelType {
     var isFavorite: Bool = false
-    
+
     func toggleFavorite() {}
-    
+
     var data: ShowDetailData = .init(from: .mock)
 
     var seasonsState: LoadableState<[Season]> = .loading
 
     func onAppear() async {}
-    
+
     func tapEpisode(_ episode: Episode) {}
 }
 

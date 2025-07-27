@@ -26,6 +26,8 @@ extension View {
 func applyTabBarAppearance() {
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
+    appearance.shadowImage = UIImage()
+    appearance.shadowColor = .clear
     appearance.backgroundColor = UIColor(named: "backgroundPrimary") ?? .systemBackground
 
     let normalFont = UIFont.systemFont(ofSize: 10)

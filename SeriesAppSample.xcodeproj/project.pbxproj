@@ -76,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30B7E20F2E36D85B00934536 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeriesAppSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		30B7E2112E36D85B00934536 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D21FCB2E36625700C480F6 /* DSColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSColors.swift; sourceTree = "<group>"; };
 		30D21FCD2E36625700C480F6 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
 		30D21FCE2E36625700C480F6 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
@@ -126,9 +129,6 @@
 		30D220D22E36CA1000C480F6 /* ShowsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsServiceTests.swift; sourceTree = "<group>"; };
 		30D220D42E36CA5600C480F6 /* MockHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHandler.swift; sourceTree = "<group>"; };
 		30D220D62E36CA5F00C480F6 /* MockShowsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShowsRouter.swift; sourceTree = "<group>"; };
-		30D220D82E36D6BD00C480F6 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SeriesAppSample.app; path = "/Users/adautopinheiro/Desktop/series-app-sample/build/Debug-iphoneos/SeriesAppSample.app"; sourceTree = "<absolute>"; };
-		30D220D92E36D6BD00C480F6 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleTests.xctest; path = "/Users/adautopinheiro/Desktop/series-app-sample/build/Debug-iphoneos/SeriesAppSample.app/PlugIns/SeriesAppSampleTests.xctest"; sourceTree = "<absolute>"; };
-		30D220DA2E36D6BD00C480F6 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SeriesAppSampleUITests.xctest; path = "/Users/adautopinheiro/Desktop/series-app-sample/build/Debug-iphoneos/SeriesAppSampleUITests-Runner.app/PlugIns/SeriesAppSampleUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +161,9 @@
 			children = (
 				30D21FF22E36625700C480F6 /* SeriesAppSample */,
 				30D220102E36627000C480F6 /* SeriesAppSampleTests */,
+				30B7E20F2E36D85B00934536 /* SeriesAppSample.app */,
+				30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */,
+				30B7E2112E36D85B00934536 /* SeriesAppSampleUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,11 +200,11 @@
 		30D21FDA2E36625700C480F6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				30D220792E36762500C480F6 /* PersistenceController.swift */,
-				30D220722E3670AD00C480F6 /* TabBarAppearanceModifier.swift */,
 				30D21FCC2E36625700C480F6 /* DesignSystem */,
 				30D21FD02E36625700C480F6 /* Network */,
 				30D21FD62E36625700C480F6 /* Views */,
+				30D220792E36762500C480F6 /* PersistenceController.swift */,
+				30D220722E3670AD00C480F6 /* TabBarAppearanceModifier.swift */,
 				30D21FD72E36625700C480F6 /* OpaqueNavigationModifier.swift */,
 				30D21FD82E36625700C480F6 /* TransparentNavigationModifier.swift */,
 				30D21FD92E36625700C480F6 /* View+Extensions.swift */,
@@ -407,7 +410,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSample;
-			productReference = 30D220D82E36D6BD00C480F6 /* SeriesAppSample.app */;
+			productReference = 30B7E20F2E36D85B00934536 /* SeriesAppSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 		302226012E346930005A4EEC /* SeriesAppSampleTests */ = {
@@ -427,7 +430,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleTests;
-			productReference = 30D220D92E36D6BD00C480F6 /* SeriesAppSampleTests.xctest */;
+			productReference = 30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		3022260B2E346930005A4EEC /* SeriesAppSampleUITests */ = {
@@ -447,7 +450,7 @@
 			packageProductDependencies = (
 			);
 			productName = MovieListSampleUITests;
-			productReference = 30D220DA2E36D6BD00C480F6 /* SeriesAppSampleUITests.xctest */;
+			productReference = 30B7E2112E36D85B00934536 /* SeriesAppSampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */

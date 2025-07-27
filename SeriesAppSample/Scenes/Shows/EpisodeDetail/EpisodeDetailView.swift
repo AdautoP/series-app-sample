@@ -24,9 +24,9 @@ struct EpisodeDetailView<ViewModel: EpisodeDetailViewModelType>: View {
                                 .scaledToFill()
                         } placeholder: {
                             PlaceholderImage(size: .large)
+                                .aspectRatio(16/9, contentMode: .fit)
                         }
                         .frame(maxWidth: .infinity)
-                        .aspectRatio(16/9, contentMode: .fit)
                     }
 
                     VStack(alignment: .leading, spacing: 8) {
