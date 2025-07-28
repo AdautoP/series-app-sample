@@ -218,6 +218,7 @@
 				30D21FD72E36625700C480F6 /* OpaqueNavigationModifier.swift */,
 				30D21FD82E36625700C480F6 /* TransparentNavigationModifier.swift */,
 				30D21FD92E36625700C480F6 /* View+Extensions.swift */,
+				30D220912E36B50400C480F6 /* PINStorage.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -337,7 +338,6 @@
 		30D220832E369E3E00C480F6 /* PIN */ = {
 			isa = PBXGroup;
 			children = (
-				30D220912E36B50400C480F6 /* PINStorage.swift */,
 				30D2208A2E36A25200C480F6 /* PINAuth */,
 				30D220872E36A24000C480F6 /* PINSetup */,
 				30D220852E369F9A00C480F6 /* PINCoordinator.swift */,
