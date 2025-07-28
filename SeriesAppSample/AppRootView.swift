@@ -76,7 +76,6 @@ struct AppCoordinatorView<Router: AppRouterType>: View {
     }
 }
 
-
 @main
 struct AppRootView: App {
     private let appRouter = AppRouter()

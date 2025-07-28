@@ -36,19 +36,19 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
             VStack {
                 List(shows) { show in
                     ShowRowView(show: show)
-                        .onAppear {
-                            if show == shows.last {
-                                if !viewModel.isLoadingBottom {
-                                    viewModel.reachedBottom()
-                                }
-                            }
-                        }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .contentShape(Rectangle())
                         .listRowSeparator(show == shows.first ? .hidden : .visible, edges: .top)
                         .listRowSeparator(show == shows.last ? .hidden : .visible, edges: .bottom)
                         .listRowSeparatorTint(.divider)
                         .listRowBackground(Color.clear)
+                        .onAppear {
+                            if show == shows.last {
+                                if !viewModel.isLoadingBottom {
+                                    Task { await viewModel.reachedBottom() }
+                                }
+                            }
+                        }
                         .onTapGesture {
                             viewModel.tapShow(show)
                         }

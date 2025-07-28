@@ -9,9 +9,9 @@ import XCTest
 @testable import SeriesAppSample
 
 final class MockHandler: NetworkHandlerType {
+    
     var responses: [String: Any] = [:]
     var executedPaths: [String] = []
-
     func execute<Response>(_ request: NetworkRequest) async -> Result<Response, NetworkError> where Response : Decodable {
         executedPaths.append(request.path)
 

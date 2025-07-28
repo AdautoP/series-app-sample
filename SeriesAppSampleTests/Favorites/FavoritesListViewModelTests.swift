@@ -19,12 +19,10 @@ final class FavoritesListViewModelTests: XCTestCase {
     func testOnAppear_WhenCalled_ThenLoadsFavorites() async {
         let context = container.viewContext
 
-        // Save one favorite manually
         let fav = FavoriteShow(context: context)
         fav.id = 1
         try? context.save()
 
-        // Provide matching show in service
         service.showsById[1] = .mock
 
         sut = FavoritesListViewModel(router: router, service: service, container: container)
@@ -47,14 +45,12 @@ final class FavoritesListViewModelTests: XCTestCase {
     }
 
     func testSearchQuery_WhenSet_ThenFiltersCorrectly() async {
-        // Setup context with 2 favorites
         let context = container.viewContext
 
         let fav1 = FavoriteShow(context: context); fav1.id = 1
         let fav2 = FavoriteShow(context: context); fav2.id = 2
         try? context.save()
 
-        // Two mock shows
         service.showsById[1] = Show.mock
         service.showsById[2] = Show(
             id: 2,

@@ -17,7 +17,7 @@ protocol ShowsListViewModelType: ObservableObject {
     var searchState: LoadableState<[Show]> { get }
 
     func onAppear() async
-    func reachedBottom()
+    func reachedBottom() async
     func tapShow(_ show: Show)
 }
 
@@ -59,15 +59,14 @@ final class ShowsListViewModel: ShowsListViewModelType, ObservableObject {
         await request(page: currentPage)
     }
 
-    func reachedBottom() {
+    @MainActor
+    func reachedBottom() async {
         guard !isLoadingBottom, canLoadMore else { return }
 
         isLoadingBottom = true
         currentPage += 1
 
-        Task {
-            await request(page: currentPage)
-        }
+        await request(page: currentPage)
     }
 
     func tapShow(_ show: Show) {

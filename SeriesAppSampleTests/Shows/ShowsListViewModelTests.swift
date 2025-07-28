@@ -25,8 +25,7 @@ final class ShowsListViewModelTests: XCTestCase {
 
     func testReachedBottom_WhenCalled_ThenLoadsNextPage() async {
         await sut.onAppear()
-        sut.reachedBottom()
-        try? await Task.sleep(nanoseconds: 200_000_000)
+        await sut.reachedBottom()
 
         XCTAssertEqual(sut.state, .success([.mock]))
         XCTAssertFalse(sut.isLoadingBottom)
