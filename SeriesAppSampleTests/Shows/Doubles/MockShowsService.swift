@@ -10,7 +10,7 @@ import XCTest
 
 final class MockShowsService: ShowsServiceType {
     var getShowsCalled = false
-    var showsResult: Result<[Show], NetworkError> = .success([.mock])
+    var showsResult: Result<[Show], NetworkError> = .success([.mock()])
     func getShows(for page: Int) async -> Result<[Show], NetworkError> {
         getShowsCalled = true
         return showsResult
@@ -25,7 +25,7 @@ final class MockShowsService: ShowsServiceType {
     }
 
     var searchShowsCalledWith: String?
-    var searchResult: Result<[SearchResult], NetworkError> = .success([SearchResult(score: 1.0, show: .mock)])
+    var searchResult: Result<[SearchResult], NetworkError> = .success([SearchResult(score: 1.0, show: .mock())])
     func searchShows(for query: String) async -> Result<[SearchResult], NetworkError> {
         searchShowsCalledWith = query
         return searchResult

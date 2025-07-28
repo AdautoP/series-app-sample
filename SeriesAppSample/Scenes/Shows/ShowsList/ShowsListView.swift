@@ -107,8 +107,17 @@ class MockShowListViewModel: ShowsListViewModelType {
 
     func reachedBottom() {}
 
-    @Published var state: LoadableState<[Show]> = .success([.mock])
-    @Published var searchState: LoadableState<[Show]> = .success([.mock])
+    @Published var state: LoadableState<[Show]> = .success(
+        [
+            .mock(),
+            .mock(id: 2),
+            .mock(id: 3),
+            .mock(id: 4),
+            .mock(id: 5),
+            .mock(id: 6)
+        ]
+    )
+    @Published var searchState: LoadableState<[Show]> = .success([.mock()])
     func onAppear() async {}
     func tapShow(_ show: Show) {}
 }

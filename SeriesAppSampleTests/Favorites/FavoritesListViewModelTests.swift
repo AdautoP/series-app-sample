@@ -23,22 +23,22 @@ final class FavoritesListViewModelTests: XCTestCase {
         fav.id = 1
         try? context.save()
 
-        service.showsById[1] = .mock
+        service.showsById[1] = .mock()
 
         sut = FavoritesListViewModel(router: router, service: service, container: container)
 
         await sut.onAppear()
 
-        XCTAssertEqual(sut.state, .success([.mock]))
+        XCTAssertEqual(sut.state, .success([.mock()]))
     }
 
     func testTapShow_WhenCalled_ThenRoutesToDetail() {
         sut = FavoritesListViewModel(router: router, service: service, container: container)
 
-        sut.tapShow(.mock)
+        sut.tapShow(.mock())
 
         if case .showDetail(let detailData) = router.routedTo {
-            XCTAssertEqual(detailData.id, Show.mock.id)
+            XCTAssertEqual(detailData.id, Show.mock().id)
         } else {
             XCTFail("Expected to route to .showDetail")
         }
@@ -51,33 +51,8 @@ final class FavoritesListViewModelTests: XCTestCase {
         let fav2 = FavoriteShow(context: context); fav2.id = 2
         try? context.save()
 
-        service.showsById[1] = Show.mock
-        service.showsById[2] = Show(
-            id: 2,
-            url: "",
-            name: "Another Show",
-            type: "Scripted",
-            language: "English",
-            genres: [],
-            status: "",
-            runtime: nil,
-            averageRuntime: nil,
-            premiered: nil,
-            ended: nil,
-            officialSite: nil,
-            schedule: .init(time: "", days: []),
-            rating: .init(average: nil),
-            weight: 0,
-            network: nil,
-            webChannel: nil,
-            dvdCountry: nil,
-            externals: .init(tvrage: nil, thetvdb: nil, imdb: nil),
-            image: nil,
-            summary: nil,
-            updated: 0,
-            links: .init(self: .init(href: ""), previousepisode: nil)
-        )
-
+        service.showsById[1] = Show.mock()
+        service.showsById[2] = Show.mock(id: 2, name: "Another Show")
         sut = FavoritesListViewModel(router: router, service: service, container: container)
 
         await sut.onAppear()

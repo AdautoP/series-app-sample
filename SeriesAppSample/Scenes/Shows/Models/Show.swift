@@ -101,29 +101,32 @@ struct SearchResult: Codable, Equatable {
 }
 
 extension Show {
-    static let mock: Show = Show(
-        id: 1,
-        url: "",
-        name: "Mock Show",
-        type: "Scripted",
-        language: "English",
-        genres: ["Drama", "Comedy"],
-        status: "Running",
-        runtime: 30,
-        averageRuntime: 30,
-        premiered: "2020-01-01",
-        ended: nil,
-        officialSite: nil,
-        schedule: .init(time: "20:00", days: ["Monday"]),
-        rating: .init(average: 8.5),
-        weight: 90,
-        network: .init(id: 1, name: "Mock Network", country: .init(name: "US", code: "US", timezone: "America/New_York"), officialSite: nil),
-        webChannel: nil,
-        dvdCountry: nil,
-        externals: .init(tvrage: nil, thetvdb: nil, imdb: nil),
-        image: .init(medium: URL(string: "https://http://picsum.photos/200")!, original: URL(string: "https://http://picsum.photos/200")!),
-        summary: "A show about mocks",
-        updated: 0,
-        links: .init(self: .init(href: ""), previousepisode: nil)
-    )
+    static func mock(id: Int = 1,
+                     name: String = "Mock Show") -> Show {
+        Show(
+            id: id,
+            url: "",
+            name: name,
+            type: "Scripted",
+            language: "English",
+            genres: ["Drama", "Comedy"],
+            status: "Running",
+            runtime: 30,
+            averageRuntime: 30,
+            premiered: "2020-01-01",
+            ended: nil,
+            officialSite: nil,
+            schedule: .init(time: "20:00", days: ["Monday"]),
+            rating: .init(average: 8.5),
+            weight: 90,
+            network: .init(id: 1, name: "Mock Network", country: .init(name: "US", code: "US", timezone: "America/New_York"), officialSite: nil),
+            webChannel: nil,
+            dvdCountry: nil,
+            externals: .init(tvrage: nil, thetvdb: nil, imdb: nil),
+            image: .init(medium: URL(string: "https://http://picsum.photos/200")!, original: URL(string: "https://http://picsum.photos/200")!),
+            summary: "A show about mocks",
+            updated: 0,
+            links: .init(self: .init(href: ""), previousepisode: nil)
+        )
+    }
 }

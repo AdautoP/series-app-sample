@@ -97,12 +97,12 @@ struct ShowDetailView<ViewModel: ShowDetailViewModelType>: View {
     }
 }
 
-private class MockShowDetailViewModel: ShowDetailViewModelType {
+class MockShowDetailViewModel: ShowDetailViewModelType {
     var isFavorite: Bool = false
 
     func toggleFavorite() {}
 
-    var data: ShowDetailData = .init(from: .mock)
+    var data: ShowDetailData = .init(from: .mock())
 
     var seasonsState: LoadableState<[Season]> = .loading
 

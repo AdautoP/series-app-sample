@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30A002382E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A002372E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift */; };
+		30A0023B2E37D9C500B89E91 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 30A0023A2E37D9C500B89E91 /* SnapshotTesting */; };
+		30A0023E2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0023D2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift */; };
+		30A002422E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A002412E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift */; };
 		30D21FF32E36625700C480F6 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE72E36625700C480F6 /* ShowDetailViewModel.swift */; };
 		30D21FF42E36625700C480F6 /* ShowsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FEB2E36625700C480F6 /* ShowsListViewModel.swift */; };
 		30D21FF52E36625700C480F6 /* EpisodeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE42E36625700C480F6 /* EpisodeCardView.swift */; };
@@ -76,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30A002372E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewSnapshotTests.swift; sourceTree = "<group>"; };
+		30A0023D2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRowViewSnapshotTests.swift; sourceTree = "<group>"; };
+		30A002412E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewSnapshotTests.swift; sourceTree = "<group>"; };
 		30B7E20F2E36D85B00934536 /* SeriesAppSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeriesAppSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30B7E2112E36D85B00934536 /* SeriesAppSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30A0023B2E37D9C500B89E91 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +172,25 @@
 				30B7E20F2E36D85B00934536 /* SeriesAppSample.app */,
 				30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */,
 				30B7E2112E36D85B00934536 /* SeriesAppSampleUITests.xctest */,
+				30A002392E37D9C500B89E91 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		30A002342E37D85C00B89E91 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				30A002412E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift */,
+				30A0023D2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift */,
+				30A002372E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		30A002392E37D9C500B89E91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		30D21FCC2E36625700C480F6 /* DesignSystem */ = {
@@ -366,6 +392,7 @@
 		30D220C02E36C07E00C480F6 /* Shows */ = {
 			isa = PBXGroup;
 			children = (
+				30A002342E37D85C00B89E91 /* Views */,
 				30D220BF2E36C06F00C480F6 /* Doubles */,
 				30D220BD2E36C03B00C480F6 /* ShowsListViewModelTests.swift */,
 				30D220C52E36C2C900C480F6 /* ShowDetailViewModelTests.swift */,
@@ -428,6 +455,7 @@
 			);
 			name = SeriesAppSampleTests;
 			packageProductDependencies = (
+				30A0023A2E37D9C500B89E91 /* SnapshotTesting */,
 			);
 			productName = MovieListSampleTests;
 			productReference = 30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */;
@@ -486,6 +514,7 @@
 			mainGroup = 302225EC2E34692E005A4EEC;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				30A002332E37D85100B89E91 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 302225EC2E34692E005A4EEC;
@@ -577,9 +606,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D220C22E36C08800C480F6 /* MockShowsService.swift in Sources */,
+				30A0023E2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift in Sources */,
+				30A002422E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift in Sources */,
 				30D220D32E36CA1000C480F6 /* ShowsServiceTests.swift in Sources */,
 				30D220CF2E36C88800C480F6 /* MockFavoritesService.swift in Sources */,
 				30D220CB2E36C81600C480F6 /* FavoritesListViewModelTests.swift in Sources */,
+				30A002382E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift in Sources */,
 				30D220D52E36CA5600C480F6 /* MockHandler.swift in Sources */,
 				30D220C62E36C2C900C480F6 /* ShowDetailViewModelTests.swift in Sources */,
 				30D220BE2E36C03B00C480F6 /* ShowsListViewModelTests.swift in Sources */,
@@ -904,6 +936,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		30A002332E37D85100B89E91 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.18.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30A0023A2E37D9C500B89E91 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30A002332E37D85100B89E91 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		30D220772E3673F400C480F6 /* SeriesAppSample.xcdatamodeld */ = {

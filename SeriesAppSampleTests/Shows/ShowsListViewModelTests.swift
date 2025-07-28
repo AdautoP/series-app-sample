@@ -20,14 +20,14 @@ final class ShowsListViewModelTests: XCTestCase {
         await sut.onAppear()
 
         XCTAssertTrue(service.getShowsCalled)
-        XCTAssertEqual(sut.state, .success([.mock]))
+        XCTAssertEqual(sut.state, .success([.mock()]))
     }
 
     func testReachedBottom_WhenCalled_ThenLoadsNextPage() async {
         await sut.onAppear()
         await sut.reachedBottom()
 
-        XCTAssertEqual(sut.state, .success([.mock]))
+        XCTAssertEqual(sut.state, .success([.mock()]))
         XCTAssertFalse(sut.isLoadingBottom)
     }
 
@@ -36,14 +36,14 @@ final class ShowsListViewModelTests: XCTestCase {
         try? await Task.sleep(nanoseconds: 500_000_000)
 
         XCTAssertEqual(service.searchShowsCalledWith, "Test")
-        XCTAssertEqual(sut.searchState, .success([.mock]))
+        XCTAssertEqual(sut.searchState, .success([.mock()]))
     }
 
     func testTapShow_WhenCalled_ThenRoutesToDetail() {
-        sut.tapShow(.mock)
+        sut.tapShow(.mock())
 
         if case .showDetail(let detailData) = router.routedTo {
-            XCTAssertEqual(detailData.id, Show.mock.id)
+            XCTAssertEqual(detailData.id, Show.mock().id)
         } else {
             XCTFail("Expected to route to .showDetail")
         }

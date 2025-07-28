@@ -75,6 +75,6 @@ struct ShowRowView: View {
 }
 
 #Preview {
-    ShowRowView(show: .mock)
+    ShowRowView(show: .mock())
     .background(.backgroundPrimary)
 }

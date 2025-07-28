@@ -18,7 +18,7 @@ final class ShowDetailViewModelTests: XCTestCase {
         context = PersistenceController(inMemory: true).container.viewContext
 
         sut = ShowDetailViewModel(
-            show: ShowDetailData(from: .mock),
+            show: ShowDetailData(from: .mock()),
             router: router,
             service: service,
             coreDataContainer: PersistenceController(inMemory: true).container
