@@ -187,9 +187,13 @@ This project uses:
 
 ## 🧪 Tests
 
-All show related `ViewModel` and service are fully unit tested with mocked services and coordinators.
+All show related `ViewModel` and service are fully unit tested with mocked services and coordinators for serving as example.
 
 Example of test naming convention:
 ```swift
 func testMethodName_WhenConditionHappens_ThenExpectResult()
 ````
+
+Also, i've added some snapshot tests just for example :D
+
+Code is not 100% covered but it's structured respecting SOLID so it can be.
