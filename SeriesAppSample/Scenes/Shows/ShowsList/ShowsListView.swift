@@ -26,6 +26,7 @@ struct ShowsListView<ViewModel: ShowsListViewModelType>: View {
         .background(.backgroundPrimary)
         .searchable(text: $viewModel.searchQuery, prompt: Text("Search shows…"))
         .navigationTitle(viewModel.title)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .onAppear {
             Task { await viewModel.onAppear() }
         }

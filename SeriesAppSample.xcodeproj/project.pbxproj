@@ -73,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		305791CA2ED897F500213EC2 /* SeriesAppSample.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SeriesAppSample.xctestplan; sourceTree = "<group>"; };
 		30A002372E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewSnapshotTests.swift; sourceTree = "<group>"; };
 		30A0023D2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRowViewSnapshotTests.swift; sourceTree = "<group>"; };
 		30A002412E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewSnapshotTests.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 				30D220102E36627000C480F6 /* SeriesAppSampleTests */,
 				30B7E20F2E36D85B00934536 /* SeriesAppSample.app */,
 				30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */,
+				305791CA2ED897F500213EC2 /* SeriesAppSample.xctestplan */,
 				30A002392E37D9C500B89E91 /* Frameworks */,
 			);
 			sourceTree = "<group>";

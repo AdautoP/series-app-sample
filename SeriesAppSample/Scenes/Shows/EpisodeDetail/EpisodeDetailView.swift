@@ -51,8 +51,6 @@ struct EpisodeDetailView<ViewModel: EpisodeDetailViewModelType>: View {
                     .padding(.horizontal)
                 }
             }
-            .navigationTitle(viewModel.data.name)
-            .navigationBarTitleDisplayMode(.inline)
             .background(.backgroundPrimary)
 
             CloseButton()

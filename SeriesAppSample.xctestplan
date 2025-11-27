@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "8C9551B5-9728-4EE0-A229-7B00B23D755C",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SeriesAppSample.xcodeproj",
+        "identifier" : "302226012E346930005A4EEC",
+        "name" : "SeriesAppSampleTests"
+      }
+    }
+  ],
+  "version" : 1
+}
