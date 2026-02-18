@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		308CCA5C2F4683E300F4708C /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 308CCA5B2F4683E300F4708C /* Network */; };
+		308CCA5E2F46859900F4708C /* NetworkHandler+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308CCA5D2F46859200F4708C /* NetworkHandler+Ext.swift */; };
 		30A002382E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A002372E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift */; };
 		30A0023E2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A0023D2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift */; };
 		30A002422E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A002412E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift */; };
@@ -14,7 +16,6 @@
 		30D21FF32E36625700C480F6 /* ShowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE72E36625700C480F6 /* ShowDetailViewModel.swift */; };
 		30D21FF42E36625700C480F6 /* ShowsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FEB2E36625700C480F6 /* ShowsListViewModel.swift */; };
 		30D21FF52E36625700C480F6 /* EpisodeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE42E36625700C480F6 /* EpisodeCardView.swift */; };
-		30D21FF62E36625700C480F6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FCE2E36625700C480F6 /* NetworkHandler.swift */; };
 		30D21FF72E36625700C480F6 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FD12E36625700C480F6 /* AsyncImageView.swift */; };
 		30D21FF82E36625700C480F6 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FD52E36625700C480F6 /* SearchBarView.swift */; };
 		30D21FF92E36625700C480F6 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FD32E36625700C480F6 /* CloseButton.swift */; };
@@ -28,7 +29,6 @@
 		30D220012E36625700C480F6 /* ShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE62E36625700C480F6 /* ShowDetailView.swift */; };
 		30D220022E36625700C480F6 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE22E36625700C480F6 /* Show.swift */; };
 		30D220032E36625700C480F6 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE12E36625700C480F6 /* Episode.swift */; };
-		30D220042E36625700C480F6 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FCF2E36625700C480F6 /* NetworkRequest.swift */; };
 		30D220052E36625700C480F6 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FD92E36625700C480F6 /* View+Extensions.swift */; };
 		30D220062E36625700C480F6 /* SeasonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FE52E36625700C480F6 /* SeasonsView.swift */; };
 		30D220072E36625700C480F6 /* AsyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D21FD22E36625700C480F6 /* AsyncView.swift */; };
@@ -74,6 +74,8 @@
 
 /* Begin PBXFileReference section */
 		305791CA2ED897F500213EC2 /* SeriesAppSample.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SeriesAppSample.xctestplan; sourceTree = "<group>"; };
+		308CCA582F4681BD00F4708C /* Network */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Network; sourceTree = "<group>"; };
+		308CCA5D2F46859200F4708C /* NetworkHandler+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkHandler+Ext.swift"; sourceTree = "<group>"; };
 		30A002372E37D8DA00B89E91 /* ShowsListViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListViewSnapshotTests.swift; sourceTree = "<group>"; };
 		30A0023D2E37DC9700B89E91 /* ShowRowViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRowViewSnapshotTests.swift; sourceTree = "<group>"; };
 		30A002412E37DE5000B89E91 /* ShowDetailViewSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewSnapshotTests.swift; sourceTree = "<group>"; };
@@ -81,8 +83,6 @@
 		30B7E2102E36D85B00934536 /* SeriesAppSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeriesAppSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D21FCB2E36625700C480F6 /* DSColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSColors.swift; sourceTree = "<group>"; };
 		30D21FCD2E36625700C480F6 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
-		30D21FCE2E36625700C480F6 /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
-		30D21FCF2E36625700C480F6 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		30D21FD12E36625700C480F6 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		30D21FD22E36625700C480F6 /* AsyncView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncView.swift; sourceTree = "<group>"; };
 		30D21FD32E36625700C480F6 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
@@ -136,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308CCA5C2F4683E300F4708C /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +154,7 @@
 		302225EC2E34692E005A4EEC = {
 			isa = PBXGroup;
 			children = (
+				308CCA592F4681DA00F4708C /* Packages */,
 				30D21FF22E36625700C480F6 /* SeriesAppSample */,
 				30D220102E36627000C480F6 /* SeriesAppSampleTests */,
 				30B7E20F2E36D85B00934536 /* SeriesAppSample.app */,
@@ -160,6 +162,14 @@
 				305791CA2ED897F500213EC2 /* SeriesAppSample.xctestplan */,
 				30A002392E37D9C500B89E91 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		308CCA592F4681DA00F4708C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				308CCA582F4681BD00F4708C /* Network */,
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 		30A002342E37D85C00B89E91 /* Views */ = {
@@ -190,9 +200,8 @@
 		30D21FD02E36625700C480F6 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				308CCA5D2F46859200F4708C /* NetworkHandler+Ext.swift */,
 				30D21FCD2E36625700C480F6 /* EnvironmentValues.swift */,
-				30D21FCE2E36625700C480F6 /* NetworkHandler.swift */,
-				30D21FCF2E36625700C480F6 /* NetworkRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -421,6 +430,7 @@
 			);
 			name = SeriesAppSample;
 			packageProductDependencies = (
+				308CCA5B2F4683E300F4708C /* Network */,
 			);
 			productName = MovieListSample;
 			productReference = 30B7E20F2E36D85B00934536 /* SeriesAppSample.app */;
@@ -477,6 +487,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				30A002432E37E3EC00B89E91 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				308CCA5A2F4683C500F4708C /* XCLocalSwiftPackageReference "Packages/Network" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 302225EC2E34692E005A4EEC;
@@ -514,9 +525,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D21FF32E36625700C480F6 /* ShowDetailViewModel.swift in Sources */,
+				308CCA5E2F46859900F4708C /* NetworkHandler+Ext.swift in Sources */,
 				30D21FF42E36625700C480F6 /* ShowsListViewModel.swift in Sources */,
 				30D21FF52E36625700C480F6 /* EpisodeCardView.swift in Sources */,
-				30D21FF62E36625700C480F6 /* NetworkHandler.swift in Sources */,
 				30D21FF72E36625700C480F6 /* AsyncImageView.swift in Sources */,
 				30D21FF82E36625700C480F6 /* SearchBarView.swift in Sources */,
 				30D21FF92E36625700C480F6 /* CloseButton.swift in Sources */,
@@ -541,7 +552,6 @@
 				30D220732E3670AD00C480F6 /* TabBarAppearanceModifier.swift in Sources */,
 				30D220022E36625700C480F6 /* Show.swift in Sources */,
 				30D220032E36625700C480F6 /* Episode.swift in Sources */,
-				30D220042E36625700C480F6 /* NetworkRequest.swift in Sources */,
 				30D220862E369F9A00C480F6 /* PINCoordinator.swift in Sources */,
 				30D220052E36625700C480F6 /* View+Extensions.swift in Sources */,
 				30D220062E36625700C480F6 /* SeasonsView.swift in Sources */,
@@ -836,6 +846,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		308CCA5A2F4683C500F4708C /* XCLocalSwiftPackageReference "Packages/Network" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/Network;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		30A002432E37E3EC00B89E91 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -848,6 +865,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		308CCA5B2F4683E300F4708C /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Network;
+		};
 		30A002442E37E3F300B89E91 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30A002432E37E3EC00B89E91 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;

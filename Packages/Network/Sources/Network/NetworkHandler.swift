@@ -7,35 +7,35 @@
 
 import Foundation
 
-protocol NetworkHandlerType {
+public protocol NetworkHandlerType {
     func execute<Response: Decodable>(
         _ request: NetworkRequest
     ) async -> Result<Response, NetworkError>
 }
 
-
-final class NetworkHandler: NetworkHandlerType {
+public final class NetworkHandler: NetworkHandlerType {
     private let session: URLSession
     private let decoder: JSONDecoder
+    private let configuration: NetworkConfiguration
 
-    static let shared = NetworkHandler()
-
-    private init(
+    public init(
+        configuration: NetworkConfiguration,
         session: URLSession = .shared,
         decoder: JSONDecoder = .init()
     ) {
+        self.configuration = configuration
         self.session = session
         self.decoder = decoder
         self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
-    func execute<Response: Decodable>(
+    public func execute<Response: Decodable>(
         _ request: NetworkRequest
     ) async -> Result<Response, NetworkError> {
         var components = URLComponents()
-        components.scheme = EnvironmentValues.scheme
-        components.host = EnvironmentValues.baseURL
-        components.path += request.path
+        components.scheme = configuration.scheme
+        components.host = configuration.host
+        components.path = request.path
         components.queryItems = request.queryItems
 
         guard let url = components.url else {
@@ -45,10 +45,8 @@ final class NetworkHandler: NetworkHandlerType {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue
 
-        if let headers = request.headers {
-            for (key, value) in headers {
-                urlRequest.setValue(value, forHTTPHeaderField: key)
-            }
+        request.headers?.forEach { key, value in
+            urlRequest.setValue(value, forHTTPHeaderField: key)
         }
 
         if let body = request.body {
@@ -71,8 +69,12 @@ final class NetworkHandler: NetworkHandlerType {
                 return .failure(.statusCode(httpResponse.statusCode, data: data))
             }
 
-            let decoded = try decoder.decode(Response.self, from: data)
-            return .success(decoded)
+            do {
+                let decoded = try decoder.decode(Response.self, from: data)
+                return .success(decoded)
+            } catch {
+                return .failure(.decoding(error))
+            }
         } catch {
             return .failure(.requestFailed(error))
         }

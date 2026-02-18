@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Network
 @testable import SeriesAppSample
 
 final class MockShowsService: ShowsServiceType {

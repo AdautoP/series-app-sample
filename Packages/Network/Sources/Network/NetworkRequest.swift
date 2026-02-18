@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
     case delete = "DELETE"
 }
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case invalidURL
     case requestFailed(Error)
     case invalidResponse
@@ -22,12 +22,12 @@ enum NetworkError: Error {
     case decoding(Error)
 }
 
-struct NetworkRequest {
-    let path: String
-    let method: HTTPMethod
-    let headers: [String: String]?
-    let queryItems: [URLQueryItem]?
-    let body: [String: Any]?
+public struct NetworkRequest {
+    public let path: String
+    public let method: HTTPMethod
+    public let headers: [String: String]?
+    public let queryItems: [URLQueryItem]?
+    public let body: [String: Any]?
 
     public init(
         path: String,

@@ -5,6 +5,8 @@
 //  Created by Adauto Pinheiro on 26/07/25.
 //
 
+import Network
+
 protocol ShowsServiceType {
     func getShows(for page: Int) async -> Result<[Show], NetworkError>
     func getEpisodes(for showId: Int) async -> Result<[Episode], NetworkError>
